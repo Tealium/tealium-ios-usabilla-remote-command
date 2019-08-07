@@ -69,7 +69,8 @@ playground.xcworkspace
 
 # Carthage
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
+Carthage/Checkouts
+TealiumUsabillaExample/Carthage/Checkouts
 
 
 # Accio dependency management
@@ -120,3 +121,4 @@ xcuserdata
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.gitignore.io/api/xcode,swift,carthage,cocoapods,swiftpackagemanager
+
