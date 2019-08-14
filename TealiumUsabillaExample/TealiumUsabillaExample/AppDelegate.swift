@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  TealiumUsabillaExample
 //
-//  Created by Jonathan Wong on 8/7/19.
-//  Copyright © 2019 Jonathan Wong. All rights reserved.
+//  Created by Christina Sund on 8/14/19.
+//  Copyright © 2019 Tealium. All rights reserved.
 //
 
 import UIKit
@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        TealiumHelper.start()
+        TealiumHelper.shared.start()
         return true
     }
 

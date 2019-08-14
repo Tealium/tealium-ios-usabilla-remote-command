@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		4B28C47022FB2901002AE7FA /* TealiumUsabilla.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B28C46622FB2901002AE7FA /* TealiumUsabilla.framework */; };
 		4B28C47722FB2901002AE7FA /* TealiumUsabilla.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B28C46922FB2901002AE7FA /* TealiumUsabilla.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4B28C48222FB3AFB002AE7FA /* UsabillaCommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B28C48022FB3AFB002AE7FA /* UsabillaCommandRunner.swift */; };
-		4B28C48322FB3AFB002AE7FA /* UsabillaCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B28C48122FB3AFB002AE7FA /* UsabillaCommand.swift */; };
 		4B28C48522FB3B08002AE7FA /* UsabillaCommandRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B28C48422FB3B08002AE7FA /* UsabillaCommandRunnerTests.swift */; };
+		CF1401C32304C098002AC330 /* UsabillaCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1401C12304C098002AC330 /* UsabillaCommand.swift */; };
+		CF1401C42304C098002AC330 /* UsabillaCommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1401C22304C098002AC330 /* UsabillaCommandRunner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,9 +30,9 @@
 		4B28C46A22FB2901002AE7FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B28C46F22FB2901002AE7FA /* TealiumUsabillaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TealiumUsabillaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B28C47622FB2901002AE7FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4B28C48022FB3AFB002AE7FA /* UsabillaCommandRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaCommandRunner.swift; sourceTree = "<group>"; };
-		4B28C48122FB3AFB002AE7FA /* UsabillaCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaCommand.swift; sourceTree = "<group>"; };
 		4B28C48422FB3B08002AE7FA /* UsabillaCommandRunnerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaCommandRunnerTests.swift; sourceTree = "<group>"; };
+		CF1401C12304C098002AC330 /* UsabillaCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaCommand.swift; sourceTree = "<group>"; };
+		CF1401C22304C098002AC330 /* UsabillaCommandRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaCommandRunner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +75,8 @@
 		4B28C46822FB2901002AE7FA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				4B28C48122FB3AFB002AE7FA /* UsabillaCommand.swift */,
-				4B28C48022FB3AFB002AE7FA /* UsabillaCommandRunner.swift */,
+				CF1401C12304C098002AC330 /* UsabillaCommand.swift */,
+				CF1401C22304C098002AC330 /* UsabillaCommandRunner.swift */,
 				4B28C46922FB2901002AE7FA /* TealiumUsabilla.h */,
 				4B28C46A22FB2901002AE7FA /* Info.plist */,
 			);
@@ -154,7 +154,7 @@
 				TargetAttributes = {
 					4B28C46522FB2901002AE7FA = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1030;
 					};
 					4B28C46E22FB2901002AE7FA = {
 						CreatedOnToolsVersion = 10.1;
@@ -201,8 +201,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B28C48322FB3AFB002AE7FA /* UsabillaCommand.swift in Sources */,
-				4B28C48222FB3AFB002AE7FA /* UsabillaCommandRunner.swift in Sources */,
+				CF1401C42304C098002AC330 /* UsabillaCommandRunner.swift in Sources */,
+				CF1401C32304C098002AC330 /* UsabillaCommand.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

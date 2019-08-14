@@ -1,55 +1,64 @@
 //
 //  TealiumHelper.swift
-//  TealiumUsabillaExample
+//  RemoteCommandModules
 //
-//  Created by Jonathan Wong on 8/7/19.
-//  Copyright © 2019 Jonathan Wong. All rights reserved.
+//  Created by Christina Sund on 6/18/19.
+//  Copyright © 2019 Christina. All rights reserved.
 //
 
 import Foundation
-import TealiumCore
-import TealiumCollect
-import TealiumRemoteCommands
-import TealiumLogger
-//import TealiumUsabilla
+import TealiumSwift
+
+enum TealiumConfiguration {
+    static let account = "tealiummobile"
+    static let profile = "usabilla-tag"
+    static let environment = "dev"
+}
 
 class TealiumHelper {
-    
+
     static let shared = TealiumHelper()
-    let config = TealiumConfig(account: "tealiummobile",
-                               profile: "usabilla-tag",
-                               environment: "qa")
-    
+
+    let config = TealiumConfig(account: TealiumConfiguration.account,
+                               profile: TealiumConfiguration.profile,
+                               environment: TealiumConfiguration.environment)
+
     var tealium: Tealium?
-    static var universalData = [String: Any]()
-    
+
     private init() {
         config.setLogLevel(logLevel: .verbose)
-        
-        let modulesList = TealiumModulesList(isWhitelist: false,
-                                             moduleNames: ["autotracking",
-                                                           "collect",
-                                                           "consentmanager"])
-        config.setModulesList(modulesList)
-        tealium = Tealium(config: config) { responses in
-            guard let remoteCommands = self.tealium?.remoteCommands() else {
-                return
-            }
-//            let usabillaCommandRunner = UsabillaCommandRunner()
-//            let usabillaCommand = UsabillaCommand(usabillaCommandRunner: usabillaCommandRunner)
-//            let usabillaRemoteCommand = usabillaCommand.remoteCommand()
-//            remoteCommands.add(usabillaRemoteCommand)
-        }
+        let list = TealiumModulesList(isWhitelist: false,
+                                      moduleNames: ["autotracking", "consentmanager"])
+        config.setModulesList(list)
+        tealium = Tealium(config: config,
+                          enableCompletion: { [weak self] _ in
+                              guard let self = self else { return }
+                              guard let remoteCommands = self.tealium?.remoteCommands() else {
+                                  return
+                              }
+                              // MARK: Usabilla
+                              let usablillaCommand = UsabillaCommand()
+                              let usabillaRemoteCommands = usablillaCommand.remoteCommand()
+                              remoteCommands.add(usabillaRemoteCommands)
+                          })
+
     }
-    
-    class func start() {
+
+
+    public func start() {
         _ = TealiumHelper.shared
     }
-    
-    class func track(title: String, data: [String: Any]?) {
-        if let data = data {
-            universalData = universalData.merging(data) { _, new in new }
-        }
-        TealiumHelper.shared.tealium?.track(title: title, data: universalData, completion: nil)
+
+    class func trackView(title: String, data: [String: Any]?) {
+        TealiumHelper.shared.tealium?.track(title: title, data: data, completion: nil)
     }
+
+    class func trackScreen<T: UIViewController>(_ view: T, name: String) {
+        TealiumHelper.trackView(title: "screen_view", data: ["screen_name": name, "screen_class": "\(view.classForCoder)"])
+    }
+
+    class func trackEvent(title: String, data: [String: Any]?) {
+        TealiumHelper.shared.tealium?.track(title: title, data: data, completion: nil)
+    }
+
 }
