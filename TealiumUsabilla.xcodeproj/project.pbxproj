@@ -12,6 +12,16 @@
 		4B28C48522FB3B08002AE7FA /* UsabillaCommandRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B28C48422FB3B08002AE7FA /* UsabillaCommandRunnerTests.swift */; };
 		CF1401C32304C098002AC330 /* UsabillaCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1401C12304C098002AC330 /* UsabillaCommand.swift */; };
 		CF1401C42304C098002AC330 /* UsabillaCommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1401C22304C098002AC330 /* UsabillaCommandRunner.swift */; };
+		CF91ECD82305D423008D721C /* Usabilla.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBA50B22304DC8600EF52BC /* Usabilla.framework */; };
+		CFBA50AD2304D4CA00EF52BC /* UsabillaCommand.swift in Headers */ = {isa = PBXBuildFile; fileRef = CF1401C12304C098002AC330 /* UsabillaCommand.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		CFBA50AE2304D4CA00EF52BC /* UsabillaCommandRunner.swift in Headers */ = {isa = PBXBuildFile; fileRef = CF1401C22304C098002AC330 /* UsabillaCommandRunner.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		CFBA50B62304DC8600EF52BC /* TealiumTagManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBA50B12304DC8600EF52BC /* TealiumTagManagement.framework */; };
+		CFBA50B82304DC8600EF52BC /* TealiumCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBA50B32304DC8600EF52BC /* TealiumCore.framework */; };
+		CFBA50B92304DC8600EF52BC /* TealiumDelegate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBA50B42304DC8600EF52BC /* TealiumDelegate.framework */; };
+		CFBA50BA2304DC8600EF52BC /* TealiumRemoteCommands.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBA50B52304DC8600EF52BC /* TealiumRemoteCommands.framework */; };
+		CFBA50BB2304DD1600EF52BC /* TealiumCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBA50B32304DC8600EF52BC /* TealiumCore.framework */; };
+		CFBA50BC2304DD1600EF52BC /* TealiumRemoteCommands.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBA50B52304DC8600EF52BC /* TealiumRemoteCommands.framework */; };
+		CFBA50BF2304DD6F00EF52BC /* HttpTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA50BE2304DD6F00EF52BC /* HttpTestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +43,13 @@
 		4B28C48422FB3B08002AE7FA /* UsabillaCommandRunnerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaCommandRunnerTests.swift; sourceTree = "<group>"; };
 		CF1401C12304C098002AC330 /* UsabillaCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaCommand.swift; sourceTree = "<group>"; };
 		CF1401C22304C098002AC330 /* UsabillaCommandRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaCommandRunner.swift; sourceTree = "<group>"; };
+		CFBA50B12304DC8600EF52BC /* TealiumTagManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumTagManagement.framework; path = Carthage/Build/iOS/TealiumTagManagement.framework; sourceTree = "<group>"; };
+		CFBA50B22304DC8600EF52BC /* Usabilla.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Usabilla.framework; path = Carthage/Build/iOS/Usabilla.framework; sourceTree = "<group>"; };
+		CFBA50B32304DC8600EF52BC /* TealiumCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumCore.framework; path = Carthage/Build/iOS/TealiumCore.framework; sourceTree = "<group>"; };
+		CFBA50B42304DC8600EF52BC /* TealiumDelegate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumDelegate.framework; path = Carthage/Build/iOS/TealiumDelegate.framework; sourceTree = "<group>"; };
+		CFBA50B52304DC8600EF52BC /* TealiumRemoteCommands.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumRemoteCommands.framework; path = Carthage/Build/iOS/TealiumRemoteCommands.framework; sourceTree = "<group>"; };
+		CFBA50BE2304DD6F00EF52BC /* HttpTestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTestHelpers.swift; sourceTree = "<group>"; };
+		CFE532252305D2E900280CBF /* Usabilla.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Usabilla.framework; path = "../../../../Downloads/Carthage 2/Build/iOS/Usabilla.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +57,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF91ECD82305D423008D721C /* Usabilla.framework in Frameworks */,
+				CFBA50B62304DC8600EF52BC /* TealiumTagManagement.framework in Frameworks */,
+				CFBA50B82304DC8600EF52BC /* TealiumCore.framework in Frameworks */,
+				CFBA50B92304DC8600EF52BC /* TealiumDelegate.framework in Frameworks */,
+				CFBA50BA2304DC8600EF52BC /* TealiumRemoteCommands.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +70,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B28C47022FB2901002AE7FA /* TealiumUsabilla.framework in Frameworks */,
+				CFBA50BB2304DD1600EF52BC /* TealiumCore.framework in Frameworks */,
+				CFBA50BC2304DD1600EF52BC /* TealiumRemoteCommands.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +84,7 @@
 				4B28C46822FB2901002AE7FA /* Sources */,
 				4B28C47322FB2901002AE7FA /* Tests */,
 				4B28C46722FB2901002AE7FA /* Products */,
+				CFBA50B02304DC8500EF52BC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,9 +112,23 @@
 			isa = PBXGroup;
 			children = (
 				4B28C48422FB3B08002AE7FA /* UsabillaCommandRunnerTests.swift */,
+				CFBA50BE2304DD6F00EF52BC /* HttpTestHelpers.swift */,
 				4B28C47622FB2901002AE7FA /* Info.plist */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		CFBA50B02304DC8500EF52BC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CFE532252305D2E900280CBF /* Usabilla.framework */,
+				CFBA50B32304DC8600EF52BC /* TealiumCore.framework */,
+				CFBA50B42304DC8600EF52BC /* TealiumDelegate.framework */,
+				CFBA50B52304DC8600EF52BC /* TealiumRemoteCommands.framework */,
+				CFBA50B12304DC8600EF52BC /* TealiumTagManagement.framework */,
+				CFBA50B22304DC8600EF52BC /* Usabilla.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -100,6 +139,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B28C47722FB2901002AE7FA /* TealiumUsabilla.h in Headers */,
+				CFBA50AD2304D4CA00EF52BC /* UsabillaCommand.swift in Headers */,
+				CFBA50AE2304D4CA00EF52BC /* UsabillaCommandRunner.swift in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +155,7 @@
 				4B28C46222FB2901002AE7FA /* Sources */,
 				4B28C46322FB2901002AE7FA /* Frameworks */,
 				4B28C46422FB2901002AE7FA /* Resources */,
+				CFBA50AF2304D4D100EF52BC /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -131,6 +173,7 @@
 				4B28C46B22FB2901002AE7FA /* Sources */,
 				4B28C46C22FB2901002AE7FA /* Frameworks */,
 				4B28C46D22FB2901002AE7FA /* Resources */,
+				CFBA50BD2304DD1C00EF52BC /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -196,6 +239,52 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CFBA50AF2304D4D100EF52BC /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/TealiumCore.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/TealiumDelegate.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/TealiumTagManagement.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/TealiumRemoteCommands.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Usabilla.framework",
+			);
+			name = Carthage;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		CFBA50BD2304DD1C00EF52BC /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/TealiumRemoteCommands.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/TealiumCore.framework",
+			);
+			name = Carthage;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4B28C46222FB2901002AE7FA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -211,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B28C48522FB3B08002AE7FA /* UsabillaCommandRunnerTests.swift in Sources */,
+				CFBA50BF2304DD6F00EF52BC /* HttpTestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +374,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -341,6 +432,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -358,7 +450,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = TealiumUsabilla/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -386,7 +483,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = TealiumUsabilla/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -408,7 +510,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XC939GDC9P;
-				INFOPLIST_FILE = TealiumUsabillaTests/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -427,7 +533,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XC939GDC9P;
-				INFOPLIST_FILE = TealiumUsabillaTests/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

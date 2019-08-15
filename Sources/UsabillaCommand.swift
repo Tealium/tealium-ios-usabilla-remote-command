@@ -7,8 +7,14 @@
 //
 
 import UIKit
-import TealiumSwift
 import Usabilla
+#if COCOAPODS
+import TealiumSwift
+#else
+import TealiumCore
+import TealiumTagManagement
+import TealiumRemoteCommands
+#endif
 
 class UsabillaCommand {
     
@@ -73,7 +79,7 @@ class UsabillaCommand {
                     }
                     self?.usabillaCommandRunner.displayCampaigns = displayCampaigns
                 case UsabillaCommand.loadFeedbackForm:
-                    guard let formID = payload["formId"] as? [String] else {
+                    guard let formID = payload[UsabillaKey.formID] as? [String] else {
                         return
                     }
                     self?.usabillaCommandRunner.loadFeedbackForm(formID: formID[0])

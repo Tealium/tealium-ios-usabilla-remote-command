@@ -7,8 +7,8 @@
 //
 
 import XCTest
-@testable import RemoteCommandModules
-@testable import TealiumSwift
+@testable import TealiumUsabilla
+import TealiumRemoteCommands
 
 class UsabillaCommandRunnerTests: XCTestCase {
 
@@ -27,7 +27,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
 
     func testInitializeNotCalledWithoutApiKey() {
         let expect = expectation(description: "test initialize")
-        if let response = HttpHelpers.httpRequest(commandId: "usabilla",
+        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
                                                        payload: [
                                                         "command_name": "initialize",
                                                         ])?.description {
@@ -44,10 +44,10 @@ class UsabillaCommandRunnerTests: XCTestCase {
 
     func testInitializeCalledWithAppId() {
         let expect = expectation(description: "test initialize")
-        if let response = HttpHelpers.httpRequest(commandId: "usabilla",
+        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
                                                   payload: [
                                                     "command_name": "initialize",
-                                                    "app_id": "test123"
+                                                    "appId": "test123"
                                                     ])?.description {
             let remoteCommandResponse = TealiumRemoteCommandResponse(urlString: response)
             if let response = remoteCommandResponse {
@@ -62,7 +62,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
 
     func testSendEventCalledWithoutEvent() {
         let expect = expectation(description: "test initialize")
-        if let response = HttpHelpers.httpRequest(commandId: "usabilla",
+        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
                                                   payload: [
                                                     "command_name": "initialize",
                                                     "app_id": "test123"
@@ -79,12 +79,12 @@ class UsabillaCommandRunnerTests: XCTestCase {
     }
     
     func testSendEventCalledWithEvent() {
-        let expect = expectation(description: "test initialize")
-        if let response = HttpHelpers.httpRequest(commandId: "usabilla",
+        let expect = expectation(description: "test send event called with event")
+        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
                                                   payload: [
-                                                    "command_name": "initialize, send_event",
-                                                    "app_id": "test123",
-                                                    "event_name": "my_event"
+                                                    "command_name": "initialize, sendevent",
+                                                    "appId": "test123",
+                                                    "event": "my_event"
                                                     
             ])?.description {
             let remoteCommandResponse = TealiumRemoteCommandResponse(urlString: response)
@@ -105,7 +105,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
             "command_name": "initialize,display_campaigns",
             "app_id": "test123"
         ]
-        if let response = HttpHelpers.httpRequest(commandId: "usabilla",
+        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
                                                   config: config,
                                                   payload: payload
             
@@ -125,11 +125,11 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let expect = expectation(description: "test initialize")
         let config: [String: Any] = ["response_id": "1234"]
         let payload: [String: Any] = [
-            "command_name": "initialize,display_campaigns",
-            "app_id": "test123",
-            "display_campaigns": true
+            "command_name": "initialize,candisplaycampaigns",
+            "appId": "test123",
+            "canDisplayCampaigns": true
         ]
-        if let response = HttpHelpers.httpRequest(commandId: "usabilla",
+        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
                                                   config: config,
                                                   payload: payload
             
@@ -149,10 +149,10 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let expect = expectation(description: "test initialize")
         let config: [String: Any] = ["response_id": "1234"]
         let payload: [String: Any] = [
-            "command_name": "initialize,load_feedback_form",
-            "app_id": "test123"
+            "command_name": "initialize,loadfeedbackform",
+            "appId": "test123"
         ]
-        if let response = HttpHelpers.httpRequest(commandId: "usabilla",
+        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
                                                   config: config,
                                                   payload: payload
             
@@ -169,14 +169,14 @@ class UsabillaCommandRunnerTests: XCTestCase {
     }
     
     func testLoadFeedbackFormCalledWithKey() {
-        let expect = expectation(description: "test initialize")
+        let expect = expectation(description: "test load feedback form called with form id")
         let config: [String: Any] = ["response_id": "1234"]
         let payload: [String: Any] = [
-            "command_name": "initialize,load_feedback_form",
-            "app_id": "test123",
-            "form_id": "my_form_id"
+            "command_name": "initialize,loadfeedbackform",
+            "appId": "test123",
+            "formId": ["my_form_id"]
         ]
-        if let response = HttpHelpers.httpRequest(commandId: "usabilla",
+        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
                                                   config: config,
                                                   payload: payload
             
@@ -196,10 +196,10 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let expect = expectation(description: "test initialize")
         let config: [String: Any] = ["response_id": "1234"]
         let payload: [String: Any] = [
-            "command_name": "initialize,preload_feedback_forms",
-            "app_id": "test123",
+            "command_name": "initialize,preloadfeedbackforms",
+            "appId": "test123",
         ]
-        if let response = HttpHelpers.httpRequest(commandId: "usabilla",
+        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
                                                   config: config,
                                                   payload: payload
             
@@ -219,11 +219,11 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let expect = expectation(description: "test initialize")
         let config: [String: Any] = ["response_id": "1234"]
         let payload: [String: Any] = [
-            "command_name": "initialize,preload_feedback_forms",
-            "app_id": "test123",
-            "form_ids": ["form_1", "form_2"]
+            "command_name": "initialize,preloadfeedbackforms",
+            "appId": "test123",
+            "formIds": ["form_1", "form_2"]
         ]
-        if let response = HttpHelpers.httpRequest(commandId: "usabilla",
+        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
                                                   config: config,
                                                   payload: payload
             
@@ -243,11 +243,11 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let expect = expectation(description: "test initialize")
         let config: [String: Any] = ["response_id": "1234"]
         let payload: [String: Any] = [
-            "command_name": "initialize,remove_cached_forms",
-            "app_id": "test123",
-            "form_ids": ["form_1", "form_2"]
+            "command_name": "initialize,removecachedforms",
+            "appId": "test123",
+            "formIds": ["form_1", "form_2"]
         ]
-        if let response = HttpHelpers.httpRequest(commandId: "usabilla",
+        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
                                                   config: config,
                                                   payload: payload
             
@@ -267,10 +267,10 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let expect = expectation(description: "test initialize")
         let config: [String: Any] = ["response_id": "1234"]
         let payload: [String: Any] = [
-            "command_name": "initialize,dismiss_automatically",
-            "app_id": "test123",
+            "command_name": "initialize,dismissautomatically",
+            "appId": "test123",
         ]
-        if let response = HttpHelpers.httpRequest(commandId: "usabilla",
+        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
                                                   config: config,
                                                   payload: payload
             
@@ -290,11 +290,11 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let expect = expectation(description: "test initialize")
         let config: [String: Any] = ["response_id": "1234"]
         let payload: [String: Any] = [
-            "command_name": "initialize,dismiss_automatically",
-            "app_id": "test123",
-            "dismiss_automatically": true
+            "command_name": "initialize,dismissautomatically",
+            "appId": "test123",
+            "custom": ["dismissAutomatically": 1]
         ]
-        if let response = HttpHelpers.httpRequest(commandId: "usabilla",
+        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
                                                   config: config,
                                                   payload: payload
             
@@ -314,10 +314,10 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let expect = expectation(description: "test initialize")
         let config: [String: Any] = ["response_id": "1234"]
         let payload: [String: Any] = [
-            "command_name": "initialize,reset",
-            "app_id": "test123",
+            "command_name": "initialize,resetcampaigndata",
+            "appId": "test123",
         ]
-        if let response = HttpHelpers.httpRequest(commandId: "usabilla",
+        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
                                                   config: config,
                                                   payload: payload
             
@@ -337,13 +337,11 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let expect = expectation(description: "test initialize")
         let config: [String: Any] = ["response_id": "1234"]
         let payload: [String: Any] = [
-            "command_name": "initialize,set_custom_variables",
-            "app_id": "test123",
-            "custom.key1": "value1",
-            "custom.key2": "value2",
-            "custom.key3": "value3"
+            "command_name": "initialize,setcustomvariable",
+            "appId": "test123",
+            "custom": ["key": "value1", "key2": "value2", "key3": "value3"]
         ]
-        if let response = HttpHelpers.httpRequest(commandId: "usabilla",
+        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
                                                   config: config,
                                                   payload: payload
             

@@ -8,7 +8,13 @@
 
 import Foundation
 import Usabilla
+#if COCOAPODS
 import TealiumSwift
+#else
+import TealiumCore
+import TealiumTagManagement
+import TealiumRemoteCommands
+#endif
 
 protocol UsabillaCommandRunnable {
 
