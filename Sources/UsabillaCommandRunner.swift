@@ -16,7 +16,7 @@ import TealiumTagManagement
 import TealiumRemoteCommands
 #endif
 
-protocol UsabillaCommandRunnable {
+public protocol UsabillaCommandRunnable {
 
     
     var debugEnabled: Bool { get set }
@@ -48,19 +48,19 @@ protocol UsabillaCommandRunnable {
 }
 
 
-class UsabillaCommandRunner: UsabillaCommandRunnable {
+public class UsabillaCommandRunner: UsabillaCommandRunnable {
     
     weak var tealium: Tealium?
     
-    init() {
+    public init() {
     }
     
-    init(tealium: Tealium) {
+    public init(tealium: Tealium) {
         self.tealium = tealium
         Usabilla.delegate = self
     }
     
-    var debugEnabled: Bool {
+    public var debugEnabled: Bool {
         get {
             return Usabilla.debugEnabled
         }
@@ -69,7 +69,7 @@ class UsabillaCommandRunner: UsabillaCommandRunnable {
         }
     }
     
-    var displayCampaigns: Bool {
+    public var displayCampaigns: Bool {
         get {
             return Usabilla.canDisplayCampaigns
         }
@@ -78,60 +78,60 @@ class UsabillaCommandRunner: UsabillaCommandRunnable {
         }
     }
     
-    func initialize(appID: String?) {
+    public func initialize(appID: String?) {
         Usabilla.initialize(appID: appID)
     }
     
-    func initialize(appID: String?, completion: (() -> Void)?) {
+    public func initialize(appID: String?, completion: (() -> Void)?) {
         Usabilla.initialize(appID: appID, completion: completion)
     }
     
-    func sendEvent(event: String) {
+    public func sendEvent(event: String) {
         Usabilla.sendEvent(event: event)
     }
     
-    func resetCampaignData(completion: (() -> Void)?) {
+    public func resetCampaignData(completion: (() -> Void)?) {
         Usabilla.resetCampaignData(completion: completion)
     }
     
-    func loadFeedbackForm(formID: String) {
+    public func loadFeedbackForm(formID: String) {
         Usabilla.loadFeedbackForm(formID)
     }
     
-    func preloadFeedbackForms(with formIDs: [String]) {
+    public func preloadFeedbackForms(with formIDs: [String]) {
         Usabilla.preloadFeedbackForms(withFormIDs: formIDs)
     }
     
-    func removeCachedForms() {
+    public func removeCachedForms() {
         Usabilla.removeCachedForms()
     }
     
-    func dismissAutomatically(_ automatic: Bool) {
+    public func dismissAutomatically(_ automatic: Bool) {
         Usabilla.dismissAutomatically = automatic
     }
     
-    func setCustomVariables(_ customVariables: [String: Any]) {
+    public func setCustomVariables(_ customVariables: [String: Any]) {
         Usabilla.customVariables = customVariables
     }
     
-    func reset() {
+    public func reset() {
         Usabilla.resetCampaignData(completion: nil)
     }
 }
 
 extension UsabillaCommandRunner: UsabillaDelegate {
     
-    func formDidLoad(form: UINavigationController) {
+    public func formDidLoad(form: UINavigationController) {
         tealium?.track(title: "usabilla_form_did_load")
     }
     
-    func formDidFailLoading(error: UBError) {
+    public func formDidFailLoading(error: UBError) {
         tealium?.track(title: "usabilla_form_load_error",
                        data: ["error": error.description],
                        completion: nil)
     }
     
-    func formDidClose(formID: String, withFeedbackResults results: [FeedbackResult], isRedirectToAppStoreEnabled: Bool) {
+    public func formDidClose(formID: String, withFeedbackResults results: [FeedbackResult], isRedirectToAppStoreEnabled: Bool) {
         let validResults = results.filter { feedbackResult in
             feedbackResult.abandonedPageIndex != nil && feedbackResult.rating != nil
         }
@@ -140,7 +140,7 @@ extension UsabillaCommandRunner: UsabillaDelegate {
                        completion: nil)
     }
     
-    func campaignDidClose(withFeedbackResult result: FeedbackResult, isRedirectToAppStoreEnabled: Bool) {
+    public func campaignDidClose(withFeedbackResult result: FeedbackResult, isRedirectToAppStoreEnabled: Bool) {
         guard let rating = result.rating, let abandonedPageIndex = result.abandonedPageIndex else {
             tealium?.track(title: "usabilla_form_closed")
             return

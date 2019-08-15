@@ -28,7 +28,7 @@ class TealiumHelper {
     private init() {
         config.setLogLevel(logLevel: .verbose)
         let list = TealiumModulesList(isWhitelist: false,
-                                      moduleNames: ["autotracking", "consentmanager"])
+                                      moduleNames: ["autotracking", "collect", "consentmanager"])
         config.setModulesList(list)
         tealium = Tealium(config: config,
                           enableCompletion: { [weak self] _ in

@@ -16,7 +16,7 @@ import TealiumTagManagement
 import TealiumRemoteCommands
 #endif
 
-class UsabillaCommand {
+public class UsabillaCommand {
     
     enum UsabillaCommand {
         static let initialize = "initialize"
@@ -44,11 +44,11 @@ class UsabillaCommand {
     
     var usabillaCommandRunner: UsabillaCommandRunnable
     
-    init(usabillaCommandRunner: UsabillaCommandRunnable = UsabillaCommandRunner()) {
+    public init(usabillaCommandRunner: UsabillaCommandRunnable = UsabillaCommandRunner()) {
         self.usabillaCommandRunner = usabillaCommandRunner
     }
     
-    func remoteCommand() -> TealiumRemoteCommand {
+    public func remoteCommand() -> TealiumRemoteCommand {
         return TealiumRemoteCommand(commandId: "usabilla", description: "Usabilla Remote Command") { response in
             let payload = response.payload()
             guard let command = payload[TealiumRemoteCommand.commandName] as? String else {
