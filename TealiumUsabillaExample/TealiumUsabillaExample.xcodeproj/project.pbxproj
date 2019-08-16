@@ -7,21 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25C72C773882F32C5A0D74D5 /* Pods_TealiumUsabillaExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A409BDA5619ED432639835 /* Pods_TealiumUsabillaExample.framework */; };
 		CF1401AE23049F86002AC330 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1401AD23049F86002AC330 /* AppDelegate.swift */; };
 		CF1401B023049F86002AC330 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1401AF23049F86002AC330 /* ViewController.swift */; };
 		CF1401B323049F86002AC330 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF1401B123049F86002AC330 /* Main.storyboard */; };
 		CF1401B523049F87002AC330 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF1401B423049F87002AC330 /* Assets.xcassets */; };
 		CF1401B823049F87002AC330 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF1401B623049F87002AC330 /* LaunchScreen.storyboard */; };
 		CF1401C023049FA6002AC330 /* TealiumHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1401BF23049FA6002AC330 /* TealiumHelper.swift */; };
-		CFF8E45A2304AAA60058A13C /* UsabillaCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8E4582304AAA60058A13C /* UsabillaCommand.swift */; };
-		CFF8E45B2304AAA60058A13C /* UsabillaCommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8E4592304AAA60058A13C /* UsabillaCommandRunner.swift */; };
-		D1DF30AECB1BC0D43BEE1BE3 /* Pods_TealiumUsabillaExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCF81A3DB4D838089B705EC /* Pods_TealiumUsabillaExample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4DCF81A3DB4D838089B705EC /* Pods_TealiumUsabillaExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TealiumUsabillaExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		56F79C38040FE4D595A0AD6D /* Pods-TealiumUsabillaExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TealiumUsabillaExample.debug.xcconfig"; path = "Target Support Files/Pods-TealiumUsabillaExample/Pods-TealiumUsabillaExample.debug.xcconfig"; sourceTree = "<group>"; };
-		6304C5D6A54122E57F72146D /* Pods-TealiumUsabillaExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TealiumUsabillaExample.release.xcconfig"; path = "Target Support Files/Pods-TealiumUsabillaExample/Pods-TealiumUsabillaExample.release.xcconfig"; sourceTree = "<group>"; };
+		06A409BDA5619ED432639835 /* Pods_TealiumUsabillaExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TealiumUsabillaExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		12507507161DE8953CC45F03 /* Pods-TealiumUsabillaExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TealiumUsabillaExample.release.xcconfig"; path = "Target Support Files/Pods-TealiumUsabillaExample/Pods-TealiumUsabillaExample.release.xcconfig"; sourceTree = "<group>"; };
+		1906B2D5205EB2E687D32E27 /* Pods-TealiumUsabillaExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TealiumUsabillaExample.debug.xcconfig"; path = "Target Support Files/Pods-TealiumUsabillaExample/Pods-TealiumUsabillaExample.debug.xcconfig"; sourceTree = "<group>"; };
 		CF1401AA23049F86002AC330 /* TealiumUsabillaExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TealiumUsabillaExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF1401AD23049F86002AC330 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF1401AF23049F86002AC330 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -30,8 +28,6 @@
 		CF1401B723049F87002AC330 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF1401B923049F87002AC330 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF1401BF23049FA6002AC330 /* TealiumHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TealiumHelper.swift; sourceTree = "<group>"; };
-		CFF8E4582304AAA60058A13C /* UsabillaCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaCommand.swift; sourceTree = "<group>"; };
-		CFF8E4592304AAA60058A13C /* UsabillaCommandRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaCommandRunner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,28 +35,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1DF30AECB1BC0D43BEE1BE3 /* Pods_TealiumUsabillaExample.framework in Frameworks */,
+				25C72C773882F32C5A0D74D5 /* Pods_TealiumUsabillaExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0867D6B525FADA85A0659436 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4DCF81A3DB4D838089B705EC /* Pods_TealiumUsabillaExample.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		34F3B5C4E8B5A984E7A8FE8B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				56F79C38040FE4D595A0AD6D /* Pods-TealiumUsabillaExample.debug.xcconfig */,
-				6304C5D6A54122E57F72146D /* Pods-TealiumUsabillaExample.release.xcconfig */,
+				1906B2D5205EB2E687D32E27 /* Pods-TealiumUsabillaExample.debug.xcconfig */,
+				12507507161DE8953CC45F03 /* Pods-TealiumUsabillaExample.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		4D8FB87225B3C6E456250600 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				06A409BDA5619ED432639835 /* Pods_TealiumUsabillaExample.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		CF1401A123049F86002AC330 = {
@@ -69,7 +65,7 @@
 				CF1401AC23049F86002AC330 /* TealiumUsabillaExample */,
 				CF1401AB23049F86002AC330 /* Products */,
 				34F3B5C4E8B5A984E7A8FE8B /* Pods */,
-				0867D6B525FADA85A0659436 /* Frameworks */,
+				4D8FB87225B3C6E456250600 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,8 +80,6 @@
 		CF1401AC23049F86002AC330 /* TealiumUsabillaExample */ = {
 			isa = PBXGroup;
 			children = (
-				CFF8E4582304AAA60058A13C /* UsabillaCommand.swift */,
-				CFF8E4592304AAA60058A13C /* UsabillaCommandRunner.swift */,
 				CF1401BF23049FA6002AC330 /* TealiumHelper.swift */,
 				CF1401AD23049F86002AC330 /* AppDelegate.swift */,
 				CF1401AF23049F86002AC330 /* ViewController.swift */,
@@ -104,11 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF1401BC23049F87002AC330 /* Build configuration list for PBXNativeTarget "TealiumUsabillaExample" */;
 			buildPhases = (
-				F9B52E18B308C09D17CE7DB8 /* [CP] Check Pods Manifest.lock */,
+				00195B1B7C78326083A894BE /* [CP] Check Pods Manifest.lock */,
 				CF1401A623049F86002AC330 /* Sources */,
 				CF1401A723049F86002AC330 /* Frameworks */,
 				CF1401A823049F86002AC330 /* Resources */,
-				4A72BEF892F64AE4A8FADB1B /* [CP] Embed Pods Frameworks */,
+				31F2A39AD3691BCF4FE53F8A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -166,24 +160,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4A72BEF892F64AE4A8FADB1B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TealiumUsabillaExample/Pods-TealiumUsabillaExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TealiumUsabillaExample/Pods-TealiumUsabillaExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TealiumUsabillaExample/Pods-TealiumUsabillaExample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F9B52E18B308C09D17CE7DB8 /* [CP] Check Pods Manifest.lock */ = {
+		00195B1B7C78326083A894BE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -205,6 +182,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		31F2A39AD3691BCF4FE53F8A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TealiumUsabillaExample/Pods-TealiumUsabillaExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TealiumUsabillaExample/Pods-TealiumUsabillaExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TealiumUsabillaExample/Pods-TealiumUsabillaExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -212,8 +206,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFF8E45A2304AAA60058A13C /* UsabillaCommand.swift in Sources */,
-				CFF8E45B2304AAA60058A13C /* UsabillaCommandRunner.swift in Sources */,
 				CF1401B023049F86002AC330 /* ViewController.swift in Sources */,
 				CF1401C023049FA6002AC330 /* TealiumHelper.swift in Sources */,
 				CF1401AE23049F86002AC330 /* AppDelegate.swift in Sources */,
@@ -360,7 +352,7 @@
 		};
 		CF1401BD23049F87002AC330 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56F79C38040FE4D595A0AD6D /* Pods-TealiumUsabillaExample.debug.xcconfig */;
+			baseConfigurationReference = 1906B2D5205EB2E687D32E27 /* Pods-TealiumUsabillaExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -380,7 +372,7 @@
 		};
 		CF1401BE23049F87002AC330 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6304C5D6A54122E57F72146D /* Pods-TealiumUsabillaExample.release.xcconfig */;
+			baseConfigurationReference = 12507507161DE8953CC45F03 /* Pods-TealiumUsabillaExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -8,6 +8,7 @@
 
 import Foundation
 import TealiumSwift
+import TU
 
 enum TealiumConfiguration {
     static let account = "tealiummobile"

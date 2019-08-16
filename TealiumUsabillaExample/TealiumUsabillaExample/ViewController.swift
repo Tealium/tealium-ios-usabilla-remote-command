@@ -60,6 +60,6 @@ extension ViewController: UsabillaDelegate {
     }
     
     func formDidFailLoading(error: UBError) {
-        print("Form failed to load")
+        print("Form failed to load: \(error)")
     }
 }
