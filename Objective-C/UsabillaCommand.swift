@@ -8,15 +8,9 @@
 
 import UIKit
 import Usabilla
-#if COCOAPODS
-import TealiumSwift
-#else
-import TealiumCore
-import TealiumTagManagement
-import TealiumRemoteCommands
-#endif
+import TealiumIOS
 
-public class UsabillaCommand {
+public class UsabillaCommand: NSObject {
     
     enum UsabillaCommand {
         static let initialize = "initialize"
@@ -40,18 +34,23 @@ public class UsabillaCommand {
         static let formIDs = "formIds"
         static let dismissAutomatically = "dismissAutomatically"
         static let customPrefix = "custom"
+        static let command = "command_name"
     }
     
     var usabillaCommandRunner: UsabillaCommandRunnable
     
+    @objc
     public init(usabillaCommandRunner: UsabillaCommandRunnable = UsabillaCommandRunner()) {
         self.usabillaCommandRunner = usabillaCommandRunner
     }
     
-    public func remoteCommand() -> TealiumRemoteCommand {
-        return TealiumRemoteCommand(commandId: "usabilla", description: "Usabilla Remote Command") { response in
-            let payload = response.payload()
-            guard let command = payload[TealiumRemoteCommand.commandName] as? String else {
+    @objc
+    public func remoteCommand() -> TEALRemoteCommandResponseBlock {
+        return { response in
+            guard let payload = response?.requestPayload as? [String: Any] else {
+                return
+            }
+            guard let command = payload[UsabillaKey.command] as? String else {
                 return
             }
             
@@ -116,11 +115,4 @@ public class UsabillaCommand {
             
         }
     }
-    
-}
-
-
-
-extension TealiumRemoteCommand {
-    static let commandName = "command_name"
 }
