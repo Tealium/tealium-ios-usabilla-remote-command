@@ -54,10 +54,6 @@ class TealiumHelper {
         TealiumHelper.shared.tealium?.track(title: title, data: data, completion: nil)
     }
 
-    class func trackScreen<T: UIViewController>(_ view: T, name: String) {
-        TealiumHelper.trackView(title: "screen_view", data: ["screen_name": name, "screen_class": "\(view.classForCoder)"])
-    }
-
     class func trackEvent(title: String, data: [String: Any]?) {
         TealiumHelper.shared.tealium?.track(title: title, data: data, completion: nil)
     }

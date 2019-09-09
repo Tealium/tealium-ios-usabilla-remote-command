@@ -85,10 +85,10 @@ public class UsabillaCommand {
                 }
                 self?.usabillaCommandRunner.displayCampaigns = displayCampaigns
             case UsabillaCommand.loadFeedbackForm:
-                guard let formID = payload[UsabillaKey.formID] as? [String] else {
+                guard let formID = payload[UsabillaKey.formID] as? String else {
                     return
                 }
-                self?.usabillaCommandRunner.loadFeedbackForm(formID: formID[0])
+                self?.usabillaCommandRunner.loadFeedbackForm(formID: formID)
             case UsabillaCommand.preloadFeedbackForms:
                 guard let formIDs = payload[UsabillaKey.formIDs] as? [String] else {
                     return
@@ -97,12 +97,10 @@ public class UsabillaCommand {
             case UsabillaCommand.removeCachedForms:
                 self?.usabillaCommandRunner.removeCachedForms()
             case UsabillaCommand.dismissAutomatically:
-                guard let customVariables = payload[UsabillaKey.customPrefix] as? [String: Any], let automatic = customVariables[UsabillaKey.dismissAutomatically] as? Int else {
+                guard let dismissAutomatically = payload[UsabillaKey.dismissAutomatically] as? Bool else {
                     return
                 }
-                
-                let dismiss = automatic == 1 ? true : false
-                self?.usabillaCommandRunner.dismissAutomatically(dismiss)
+                self?.usabillaCommandRunner.dismissAutomatically(dismissAutomatically)
             case UsabillaCommand.setCustomVariables:
                 let customVariables = payload.filter { key, value in
                     key.starts(with: UsabillaKey.customPrefix)

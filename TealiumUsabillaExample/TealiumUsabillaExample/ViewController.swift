@@ -18,12 +18,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func displayCampaigns(_ sender: UISwitch) {
-        let displayCampaigns = sender.isOn ? true : false
+        let displayCampaigns = sender.isOn ? "true" : "false"
         TealiumHelper.trackEvent(title: "display_campaigns", data: ["display_campaigns": displayCampaigns])
     }
     
     @IBAction func dismissForms(_ sender: UISwitch) {
-        let dismissAutomatically = sender.isOn ? true : false
+        let dismissAutomatically = sender.isOn ? "true" : "false"
         TealiumHelper.trackEvent(title: "dismiss", data: ["dismiss_automatically": dismissAutomatically])
     }
     
