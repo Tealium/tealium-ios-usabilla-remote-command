@@ -12,6 +12,7 @@ import Usabilla
 import TealiumSwift
 #else
 import TealiumCore
+import TealiumDelegate
 import TealiumTagManagement
 import TealiumRemoteCommands
 #endif
