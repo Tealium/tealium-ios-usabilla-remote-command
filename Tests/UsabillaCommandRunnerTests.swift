@@ -174,7 +174,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let payload: [String: Any] = [
             "command_name": "initialize,loadfeedbackform",
             "appId": "test123",
-            "formId": ["my_form_id"]
+            "formId": "my_form_id"
         ]
         if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
                                                   config: config,
@@ -292,7 +292,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let payload: [String: Any] = [
             "command_name": "initialize,dismissautomatically",
             "appId": "test123",
-            "custom": ["dismissAutomatically": 1]
+            "dismissAutomatically": true
         ]
         if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
                                                   config: config,
