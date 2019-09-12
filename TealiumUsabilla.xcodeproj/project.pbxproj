@@ -193,7 +193,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
-				ORGANIZATIONNAME = "Jonathan Wong";
+				ORGANIZATIONNAME = Tealium;
 				TargetAttributes = {
 					4B28C46522FB2901002AE7FA = {
 						CreatedOnToolsVersion = 10.1;
