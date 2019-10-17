@@ -6,6 +6,6 @@ target 'TealiumUsabillaExample' do
   use_frameworks!
 
   # Pods for TealiumUsabillaExample
-  pod 'TU', '0.0.2'
+  pod 'TU'
 
 end

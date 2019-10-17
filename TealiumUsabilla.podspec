@@ -31,6 +31,6 @@ Pod::Spec.new do |s|
 
     # ――― Dependencies ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
     s.ios.dependency 'tealium-swift', '~> 1.7.1'
-    s.ios.dependency 'Usabilla', '~> 6.2.0'
+    s.ios.dependency 'Usabilla', '~> 6.4.1'
 
 end
