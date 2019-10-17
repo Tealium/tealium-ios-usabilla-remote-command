@@ -1,5 +1,5 @@
 //
-//  UsabillaCommandRunnerTests.swift
+//  UsabillaTrackerTests.swift
 //  RemoteCommandModulesTests
 //
 //  Created by Jonathan Wong on 4/2/19.
@@ -12,12 +12,12 @@ import TealiumRemoteCommands
 
 class UsabillaCommandRunnerTests: XCTestCase {
 
-    let usabillaCommandRunner = MockUsabillaCommandRunner()
+    let usabillaTracker = MockUsabillaTracker()
     var usabillaCommand: UsabillaCommand!
     var remoteCommand: TealiumRemoteCommand!
     
     override func setUp() {
-        usabillaCommand = UsabillaCommand(usabillaCommandRunner: usabillaCommandRunner)
+        usabillaCommand = UsabillaCommand(usabillaTracker: usabillaTracker)
         remoteCommand = usabillaCommand.remoteCommand()
     }
 
@@ -35,7 +35,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
             if let response = remoteCommandResponse {
                 remoteCommand.remoteCommandCompletion(response)
                 
-                XCTAssertEqual(0, usabillaCommandRunner.initializeCallCount)
+                XCTAssertEqual(0, usabillaTracker.initializeCallCount)
             }
             expect.fulfill()
         }
@@ -53,7 +53,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
             if let response = remoteCommandResponse {
                 remoteCommand.remoteCommandCompletion(response)
                 
-                XCTAssertEqual(1, usabillaCommandRunner.initializeCallCount)
+                XCTAssertEqual(1, usabillaTracker.initializeCallCount)
             }
             expect.fulfill()
         }
@@ -71,7 +71,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
             if let response = remoteCommandResponse {
                 remoteCommand.remoteCommandCompletion(response)
                 
-                XCTAssertEqual(0, usabillaCommandRunner.sendEventCallCount)
+                XCTAssertEqual(0, usabillaTracker.sendEventCallCount)
             }
             expect.fulfill()
         }
@@ -91,7 +91,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
             if let response = remoteCommandResponse {
                 remoteCommand.remoteCommandCompletion(response)
                 
-                XCTAssertEqual(1, usabillaCommandRunner.sendEventCallCount)
+                XCTAssertEqual(1, usabillaTracker.sendEventCallCount)
             }
             expect.fulfill()
         }
@@ -114,7 +114,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
             if let response = remoteCommandResponse {
                 remoteCommand.remoteCommandCompletion(response)
                 
-                XCTAssertEqual(0, usabillaCommandRunner.displayCampaignsCallCount)
+                XCTAssertEqual(0, usabillaTracker.displayCampaignsCallCount)
             }
             expect.fulfill()
         }
@@ -138,7 +138,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
             if let response = remoteCommandResponse {
                 remoteCommand.remoteCommandCompletion(response)
                 
-                XCTAssertEqual(1, usabillaCommandRunner.displayCampaignsCallCount)
+                XCTAssertEqual(1, usabillaTracker.displayCampaignsCallCount)
             }
             expect.fulfill()
         }
@@ -161,7 +161,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
             if let response = remoteCommandResponse {
                 remoteCommand.remoteCommandCompletion(response)
                 
-                XCTAssertEqual(0, usabillaCommandRunner.loadFeedbackFormCallCount)
+                XCTAssertEqual(0, usabillaTracker.loadFeedbackFormCallCount)
             }
             expect.fulfill()
         }
@@ -185,7 +185,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
             if let response = remoteCommandResponse {
                 remoteCommand.remoteCommandCompletion(response)
                 
-                XCTAssertEqual(1, usabillaCommandRunner.loadFeedbackFormCallCount)
+                XCTAssertEqual(1, usabillaTracker.loadFeedbackFormCallCount)
             }
             expect.fulfill()
         }
@@ -208,7 +208,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
             if let response = remoteCommandResponse {
                 remoteCommand.remoteCommandCompletion(response)
                 
-                XCTAssertEqual(0, usabillaCommandRunner.preloadFeedbackFormCallCount)
+                XCTAssertEqual(0, usabillaTracker.preloadFeedbackFormCallCount)
             }
             expect.fulfill()
         }
@@ -232,7 +232,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
             if let response = remoteCommandResponse {
                 remoteCommand.remoteCommandCompletion(response)
                 
-                XCTAssertEqual(1, usabillaCommandRunner.preloadFeedbackFormCallCount)
+                XCTAssertEqual(1, usabillaTracker.preloadFeedbackFormCallCount)
             }
             expect.fulfill()
         }
@@ -256,7 +256,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
             if let response = remoteCommandResponse {
                 remoteCommand.remoteCommandCompletion(response)
                 
-                XCTAssertEqual(1, usabillaCommandRunner.removeCachedFormsCallCount)
+                XCTAssertEqual(1, usabillaTracker.removeCachedFormsCallCount)
             }
             expect.fulfill()
         }
@@ -279,7 +279,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
             if let response = remoteCommandResponse {
                 remoteCommand.remoteCommandCompletion(response)
                 
-                XCTAssertEqual(0, usabillaCommandRunner.dismissAutomaticallyCallCount)
+                XCTAssertEqual(0, usabillaTracker.dismissAutomaticallyCallCount)
             }
             expect.fulfill()
         }
@@ -303,7 +303,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
             if let response = remoteCommandResponse {
                 remoteCommand.remoteCommandCompletion(response)
                 
-                XCTAssertEqual(1, usabillaCommandRunner.dismissAutomaticallyCallCount)
+                XCTAssertEqual(1, usabillaTracker.dismissAutomaticallyCallCount)
             }
             expect.fulfill()
         }
@@ -326,7 +326,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
             if let response = remoteCommandResponse {
                 remoteCommand.remoteCommandCompletion(response)
                 
-                XCTAssertEqual(1, usabillaCommandRunner.resetCallCount)
+                XCTAssertEqual(1, usabillaTracker.resetCallCount)
             }
             expect.fulfill()
         }
@@ -350,7 +350,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
             if let response = remoteCommandResponse {
                 remoteCommand.remoteCommandCompletion(response)
                 
-                XCTAssertEqual(1, usabillaCommandRunner.setCustomVariablesCallCount)
+                XCTAssertEqual(1, usabillaTracker.setCustomVariablesCallCount)
             }
             expect.fulfill()
         }
@@ -358,7 +358,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
     }
 }
 
-class MockUsabillaCommandRunner: UsabillaCommandRunnable {
+class MockUsabillaTracker: UsabillaTrackable {
     
     var initializeCallCount = 0
     var sendEventCallCount = 0

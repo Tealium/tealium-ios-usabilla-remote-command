@@ -43,10 +43,10 @@ public class UsabillaCommand {
         static let customPrefix = "custom"
     }
     
-    var usabillaCommandRunner: UsabillaCommandRunnable
+    var usabillaTracker: UsabillaTrackable
     
-    public init(usabillaCommandRunner: UsabillaCommandRunnable = UsabillaCommandRunner()) {
-        self.usabillaCommandRunner = usabillaCommandRunner
+    public init(usabillaTracker: UsabillaTrackable = UsabillaCommandTracker()) {
+        self.usabillaTracker = usabillaTracker
     }
     
     public func remoteCommand() -> TealiumRemoteCommand {
@@ -74,41 +74,41 @@ public class UsabillaCommand {
                 guard let appID = payload[UsabillaKey.appID] as? String else {
                     return
                 }
-                self?.usabillaCommandRunner.initialize(appID: appID)
+                self?.usabillaTracker.initialize(appID: appID)
             case UsabillaCommand.sendEvent:
                 guard let event = payload[UsabillaKey.event] as? String else {
                     return
                 }
-                self?.usabillaCommandRunner.sendEvent(event: event)
+                self?.usabillaTracker.sendEvent(event: event)
             case UsabillaCommand.displayCampaigns:
                 guard let displayCampaigns = payload[UsabillaKey.displayCampaigns] as? Bool else {
                     return
                 }
-                self?.usabillaCommandRunner.displayCampaigns = displayCampaigns
+                self?.usabillaTracker.displayCampaigns = displayCampaigns
             case UsabillaCommand.loadFeedbackForm:
                 guard let formID = payload[UsabillaKey.formID] as? String else {
                     return
                 }
-                self?.usabillaCommandRunner.loadFeedbackForm(formID: formID)
+                self?.usabillaTracker.loadFeedbackForm(formID: formID)
             case UsabillaCommand.preloadFeedbackForms:
                 guard let formIDs = payload[UsabillaKey.formIDs] as? [String] else {
                     return
                 }
-                self?.usabillaCommandRunner.preloadFeedbackForms(with: formIDs)
+                self?.usabillaTracker.preloadFeedbackForms(with: formIDs)
             case UsabillaCommand.removeCachedForms:
-                self?.usabillaCommandRunner.removeCachedForms()
+                self?.usabillaTracker.removeCachedForms()
             case UsabillaCommand.dismissAutomatically:
                 guard let dismissAutomatically = payload[UsabillaKey.dismissAutomatically] as? Bool else {
                     return
                 }
-                self?.usabillaCommandRunner.dismissAutomatically(dismissAutomatically)
+                self?.usabillaTracker.dismissAutomatically(dismissAutomatically)
             case UsabillaCommand.setCustomVariables:
                 let customVariables = payload.filter { key, value in
                     key.starts(with: UsabillaKey.customPrefix)
                 }
-                self?.usabillaCommandRunner.setCustomVariables(customVariables)
+                self?.usabillaTracker.setCustomVariables(customVariables)
             case UsabillaCommand.reset:
-                self?.usabillaCommandRunner.reset()
+                self?.usabillaTracker.reset()
             default:
                 break
             }
