@@ -37,11 +37,11 @@ public class UsabillaCommand: NSObject {
         static let command = "command_name"
     }
     
-    var usabillaCommandRunner: UsabillaCommandRunnable
+    var usabillaTracker: UsabillaTrackable
     
     @objc
-    public init(usabillaCommandRunner: UsabillaCommandRunnable = UsabillaCommandRunner()) {
-        self.usabillaCommandRunner = usabillaCommandRunner
+    public init(usabillaTracker: UsabillaTrackable = UsabillaTracker()) {
+        self.usabillaTracker = usabillaTracker
     }
     
     @objc
@@ -72,43 +72,43 @@ public class UsabillaCommand: NSObject {
                 guard let appID = payload[UsabillaKey.appID] as? String else {
                     return
                 }
-                self?.usabillaCommandRunner.initialize(appID: appID)
+                self?.usabillaTracker.initialize(appID: appID)
             case UsabillaCommand.sendEvent:
                 guard let event = payload[UsabillaKey.event] as? String else {
                     return
                 }
-                self?.usabillaCommandRunner.sendEvent(event: event)
+                self?.usabillaTracker.sendEvent(event: event)
             case UsabillaCommand.displayCampaigns:
                 guard let displayCampaigns = payload[UsabillaKey.displayCampaigns] as? Bool else {
                     return
                 }
-                self?.usabillaCommandRunner.displayCampaigns = displayCampaigns
+                self?.usabillaTracker.displayCampaigns = displayCampaigns
             case UsabillaCommand.loadFeedbackForm:
                 guard let formID = payload[UsabillaKey.formID] as? [String] else {
                     return
                 }
-                self?.usabillaCommandRunner.loadFeedbackForm(formID: formID[0])
+                self?.usabillaTracker.loadFeedbackForm(formID: formID[0])
             case UsabillaCommand.preloadFeedbackForms:
                 guard let formIDs = payload[UsabillaKey.formIDs] as? [String] else {
                     return
                 }
-                self?.usabillaCommandRunner.preloadFeedbackForms(with: formIDs)
+                self?.usabillaTracker.preloadFeedbackForms(with: formIDs)
             case UsabillaCommand.removeCachedForms:
-                self?.usabillaCommandRunner.removeCachedForms()
+                self?.usabillaTracker.removeCachedForms()
             case UsabillaCommand.dismissAutomatically:
                 guard let customVariables = payload[UsabillaKey.customPrefix] as? [String: Any], let automatic = customVariables[UsabillaKey.dismissAutomatically] as? Int else {
                     return
                 }
                 
                 let dismiss = automatic == 1 ? true : false
-                self?.usabillaCommandRunner.dismissAutomatically(dismiss)
+                self?.usabillaTracker.dismissAutomatically(dismiss)
             case UsabillaCommand.setCustomVariables:
                 let customVariables = payload.filter { key, value in
                     key.starts(with: UsabillaKey.customPrefix)
                 }
-                self?.usabillaCommandRunner.setCustomVariables(customVariables)
+                self?.usabillaTracker.setCustomVariables(customVariables)
             case UsabillaCommand.reset:
-                self?.usabillaCommandRunner.reset()
+                self?.usabillaTracker.reset()
             default:
                 break
             }

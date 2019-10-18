@@ -1,5 +1,5 @@
 //
-//  UsabillaCommandRunner.swift
+//  UsabillaTracker.swift
 //  RemoteCommandModules
 //
 //  Created by Jonathan Wong on 4/2/19.
@@ -11,7 +11,7 @@ import Usabilla
 import TealiumIOS
 
 @objc
-public protocol UsabillaCommandRunnable {
+public protocol UsabillaTrackable {
 
     
     var debugEnabled: Bool { get set }
@@ -43,7 +43,7 @@ public protocol UsabillaCommandRunnable {
 }
 
 
-public class UsabillaCommandRunner: NSObject, UsabillaCommandRunnable {
+public class UsabillaTracker: NSObject, UsabillaTrackable {
     
     weak var tealium: Tealium? = nil
     
@@ -114,7 +114,7 @@ public class UsabillaCommandRunner: NSObject, UsabillaCommandRunnable {
     }
 }
 
-extension UsabillaCommandRunner: UsabillaDelegate {
+extension UsabillaTracker: UsabillaDelegate {
     
     public func formDidLoad(form: UINavigationController) {
         tealium?.trackEvent(withTitle: "usabilla_form_did_load", dataSources: nil)
