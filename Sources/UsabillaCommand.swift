@@ -45,7 +45,7 @@ public class UsabillaCommand {
     
     var usabillaTracker: UsabillaTrackable
     
-    public init(usabillaTracker: UsabillaTrackable = UsabillaCommandTracker()) {
+    public init(usabillaTracker: UsabillaTrackable = UsabillaTracker()) {
         self.usabillaTracker = usabillaTracker
     }
     
