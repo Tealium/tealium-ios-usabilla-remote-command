@@ -15,11 +15,12 @@ Pod::Spec.new do |s|
     
     # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
     s.authors            = { "Tealium Inc." => "tealium@tealium.com",
-        "jonathanswong"   => "jonathan.wong@tealium.com" }
+        "jonathanswong"   => "jonathan.wong@tealium.com",
+        "christinasund"   => "christina.sund@tealium.com" }
     s.social_media_url   = "https://twitter.com/tealium"
 
     # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-    s.swift_version = "4.2"
+    s.swift_version = "5.0"
     s.platform     = :ios, "10.0"
     s.ios.deployment_target = "10.0"    
 
@@ -30,7 +31,7 @@ Pod::Spec.new do |s|
     s.ios.source_files      = "Sources/*.{swift}"
 
     # ――― Dependencies ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-    s.ios.dependency 'tealium-swift', '~> 1.7.1'
-    s.ios.dependency 'Usabilla', '~> 6.4.1'
+    s.ios.dependency 'tealium-swift', '~> 1.8.2'
+    s.ios.dependency 'Usabilla', '~> 6.4.4'
 
 end
