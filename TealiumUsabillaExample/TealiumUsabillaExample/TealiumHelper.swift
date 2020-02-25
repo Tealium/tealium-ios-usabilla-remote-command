@@ -8,7 +8,7 @@
 
 import Foundation
 import TealiumSwift
-import TU
+import TealiumUsabilla
 
 enum TealiumConfiguration {
     static let account = "tealiummobile"
@@ -27,10 +27,9 @@ class TealiumHelper {
     var tealium: Tealium?
 
     private init() {
-        config.setLogLevel(logLevel: .verbose)
-        let list = TealiumModulesList(isWhitelist: false,
-                                      moduleNames: ["autotracking", "collect", "consentmanager"])
-        config.setModulesList(list)
+        config.logLevel = .verbose
+        config.shouldUseRemotePublishSettings = false
+        
         tealium = Tealium(config: config,
                           enableCompletion: { [weak self] _ in
                               guard let self = self else { return }
