@@ -35,6 +35,6 @@ Pod::Spec.new do |s|
     s.ios.dependency 'tealium-swift/TealiumRemoteCommands'
     s.ios.dependency 'tealium-swift/TealiumDelegate'
     s.ios.dependency 'tealium-swift/TealiumTagManagement'
-    s.ios.dependency 'Usabilla'
+    s.ios.dependency 'Usabilla', '~> 6.4.5'
 
 end
