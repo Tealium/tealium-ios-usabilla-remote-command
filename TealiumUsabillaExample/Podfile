@@ -6,7 +6,11 @@ target 'TealiumUsabillaExample' do
   use_frameworks!
 
   # Pods for TealiumUsabillaExample
-  # update to TealiumUsabilla
-  pod 'TU'
-
+  pod 'TealiumUsabilla'
+  pod 'tealium-swift/TealiumLogger'
+  pod 'tealium-swift/TealiumTagManagement'
+  pod 'tealium-swift/TealiumAppData'
+  pod 'tealium-swift/TealiumDeviceData'
+  pod 'tealium-swift/TealiumLifecycle'
+  
 end
