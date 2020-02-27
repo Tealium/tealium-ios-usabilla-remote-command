@@ -1,3 +1,3 @@
 binary "https://tags.tiqcdn.com/dle/tealiummobile/tealium-ios-carthage/tealium-carthage-plcrashreporter.json" "1.3.6"
-git "file:///Users/christina/Projects/work-repos/github/tealium-swift-builder" "4aeabb371d992182ef56d6b9d54007e0f21a0df0"
+github "tealium/tealium-swift" "7c0386e96927d251f5734e0a16914e5f0e8b8697"
 github "usabilla/usabilla-u4a-ios-swift-sdk" "v6.4.4"

@@ -1,3 +1,2 @@
-#github "tealium/tealium-swift" "master"
-git "file:///Users/christina/Projects/work-repos/github/tealium-swift-builder" "master"
+github "tealium/tealium-swift" "master"
 github "usabilla/usabilla-u4a-ios-swift-sdk" "v6.4.4"
