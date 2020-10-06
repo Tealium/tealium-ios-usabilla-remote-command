@@ -1,30 +1,25 @@
 PODS:
-  - tealium-swift (1.7.1):
-    - tealium-swift/TealiumFull (= 1.7.1)
-  - tealium-swift/TealiumFull (1.7.1):
-    - TealiumCrashReporter
-  - TealiumCrashReporter (1.3.5)
-  - TU (0.0.4):
-    - tealium-swift (~> 1.7.1)
-    - Usabilla (~> 6.4.1)
-  - Usabilla (6.4.1)
+  - tealium-swift (2.1.0):
+    - tealium-swift/TealiumFull (= 2.1.0)
+  - tealium-swift/TealiumFull (2.1.0)
+  - Usabilla (6.5.0)
 
 DEPENDENCIES:
-  - TU
+  - tealium-swift (from `/Users/christina/Projects/work-repos/github/tealium-swift-builder`)
+  - Usabilla (~> 6.5)
 
 SPEC REPOS:
   trunk:
-    - tealium-swift
-    - TealiumCrashReporter
-    - TU
     - Usabilla
 
+EXTERNAL SOURCES:
+  tealium-swift:
+    :path: "/Users/christina/Projects/work-repos/github/tealium-swift-builder"
+
 SPEC CHECKSUMS:
-  tealium-swift: d58c620f1af8522751773e5125334f32b6252ad3
-  TealiumCrashReporter: 74fbdd3703a65740c04e983cd0b360c673199b53
-  TU: 57fb7eb46124211f7ec2ea153cf4ef28586520d0
-  Usabilla: edd011d1586c5fd1bd42286c77b2ab437b6f30a8
+  tealium-swift: a670c2c6f3e7e5d775d9507387e8858a8541e526
+  Usabilla: 425b78ee09659fdaa420a09d0d89d91c7aed8608
 
-PODFILE CHECKSUM: de92afb426fbe2926ecba1143824e2e3c166e0f2
+PODFILE CHECKSUM: 0b53455654440a5b3867685ce53fa3582d55a547
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.9.3

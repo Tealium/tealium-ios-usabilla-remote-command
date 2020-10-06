@@ -2,7 +2,6 @@
 //  HttpTestHelpers.swift
 //  TealiumUsabilla
 //
-//  Created by Jonathan Wong on 8/8/19.
 //  Copyright © 2019 Tealium. All rights reserved.
 //
 

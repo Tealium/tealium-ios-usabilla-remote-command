@@ -1,14 +1,13 @@
 //
 //  TealiumHelper.swift
-//  RemoteCommandModules
+//  TealiumUsabillaExample
 //
-//  Created by Christina Sund on 6/18/19.
-//  Copyright © 2019 Christina. All rights reserved.
+//  Copyright © 2019 Tealium. All rights reserved.
 //
 
 import Foundation
 import TealiumSwift
-import TealiumUsabilla
+//import TealiumUsabilla
 
 enum TealiumConfiguration {
     static let account = "tealiummobile"
@@ -25,36 +24,37 @@ class TealiumHelper {
                                environment: TealiumConfiguration.environment)
 
     var tealium: Tealium?
-
+    
+    // JSON Remote Command
+    //let usabillaRemoteCommand = UsabillaRemoteCommand(type: .remote(url: "https://tags.tiqcdn.com/dle/tealiummobile/demo/usabilla.json"))
+    let usabillaRemoteCommand = UsabillaRemoteCommand(type: .local(file: "usabilla"))
+    
     private init() {
-        config.logLevel = .verbose
         config.shouldUseRemotePublishSettings = false
+        config.batchingEnabled = false
+        config.remoteAPIEnabled = true
+        config.logLevel = .info
+        config.collectors = [Collectors.Lifecycle]
+        config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
         
-        tealium = Tealium(config: config,
-                          enableCompletion: { [weak self] _ in
-                              guard let self = self else { return }
-                              guard let remoteCommands = self.tealium?.remoteCommands() else {
-                                  return
-                              }
-                              // MARK: Usabilla
-                              let usablillaCommand = UsabillaCommand()
-                              let usabillaRemoteCommands = usablillaCommand.remoteCommand()
-                              remoteCommands.add(usabillaRemoteCommands)
-                          })
+        config.addRemoteCommand(usabillaRemoteCommand)
+        
+        tealium = Tealium(config: config)
 
     }
 
-
-    public func start() {
+    class func start() {
         _ = TealiumHelper.shared
     }
 
     class func trackView(title: String, data: [String: Any]?) {
-        TealiumHelper.shared.tealium?.track(title: title, data: data, completion: nil)
+        let tealiumView = TealiumView(title, dataLayer: data)
+        TealiumHelper.shared.tealium?.track(tealiumView)
     }
-
+    
     class func trackEvent(title: String, data: [String: Any]?) {
-        TealiumHelper.shared.tealium?.track(title: title, data: data, completion: nil)
+        let tealiumEvent = TealiumEvent(title, dataLayer: data)
+        TealiumHelper.shared.tealium?.track(tealiumEvent)
     }
 
 }

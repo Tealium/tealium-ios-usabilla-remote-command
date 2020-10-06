@@ -2,7 +2,6 @@
 //  UsabillaTracker.swift
 //  TealiumUsabilla
 //
-//  Created by Jonathan Wong on 4/2/19.
 //  Copyright © 2019 Tealium. All rights reserved.
 //
 

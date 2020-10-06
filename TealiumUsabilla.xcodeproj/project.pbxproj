@@ -12,9 +12,9 @@
 		4B28C48522FB3B08002AE7FA /* UsabillaTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B28C48422FB3B08002AE7FA /* UsabillaTrackerTests.swift */; };
 		CF1287E1252CD66900122C07 /* TealiumCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CFBA50B32304DC8600EF52BC /* TealiumCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF1287E2252CD66900122C07 /* TealiumRemoteCommands.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CFBA50B52304DC8600EF52BC /* TealiumRemoteCommands.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CFA334F3252BD949006238B1 /* UsabillaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA334F0252BD949006238B1 /* UsabillaConstants.swift */; };
-		CFA334F4252BD949006238B1 /* UsabillaRemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA334F1252BD949006238B1 /* UsabillaRemoteCommand.swift */; };
-		CFA334F5252BD949006238B1 /* UsabillaTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA334F2252BD949006238B1 /* UsabillaTracker.swift */; };
+		CF128802252CE06000122C07 /* UsabillaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1287FF252CE06000122C07 /* UsabillaConstants.swift */; };
+		CF128803252CE06000122C07 /* UsabillaRemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF128800252CE06000122C07 /* UsabillaRemoteCommand.swift */; };
+		CF128804252CE06000122C07 /* UsabillaTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF128801252CE06000122C07 /* UsabillaTracker.swift */; };
 		CFA33512252BDA9D006238B1 /* TealiumCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBA50B32304DC8600EF52BC /* TealiumCore.framework */; };
 		CFA33513252BDA9D006238B1 /* TealiumCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFBA50B32304DC8600EF52BC /* TealiumCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFA33514252BDA9D006238B1 /* TealiumRemoteCommands.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBA50B52304DC8600EF52BC /* TealiumRemoteCommands.framework */; };
@@ -73,9 +73,9 @@
 		4B28C46F22FB2901002AE7FA /* TealiumUsabillaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TealiumUsabillaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B28C47622FB2901002AE7FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B28C48422FB3B08002AE7FA /* UsabillaTrackerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaTrackerTests.swift; sourceTree = "<group>"; };
-		CFA334F0252BD949006238B1 /* UsabillaConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaConstants.swift; sourceTree = "<group>"; };
-		CFA334F1252BD949006238B1 /* UsabillaRemoteCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaRemoteCommand.swift; sourceTree = "<group>"; };
-		CFA334F2252BD949006238B1 /* UsabillaTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaTracker.swift; sourceTree = "<group>"; };
+		CF1287FF252CE06000122C07 /* UsabillaConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaConstants.swift; sourceTree = "<group>"; };
+		CF128800252CE06000122C07 /* UsabillaRemoteCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaRemoteCommand.swift; sourceTree = "<group>"; };
+		CF128801252CE06000122C07 /* UsabillaTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaTracker.swift; sourceTree = "<group>"; };
 		CFBA50B12304DC8600EF52BC /* TealiumTagManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumTagManagement.framework; path = Carthage/Build/iOS/TealiumTagManagement.framework; sourceTree = "<group>"; };
 		CFBA50B22304DC8600EF52BC /* Usabilla.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Usabilla.framework; path = Carthage/Build/iOS/Usabilla.framework; sourceTree = "<group>"; };
 		CFBA50B32304DC8600EF52BC /* TealiumCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumCore.framework; path = Carthage/Build/iOS/TealiumCore.framework; sourceTree = "<group>"; };
@@ -132,9 +132,9 @@
 		4B28C46822FB2901002AE7FA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				CFA334F1252BD949006238B1 /* UsabillaRemoteCommand.swift */,
-				CFA334F2252BD949006238B1 /* UsabillaTracker.swift */,
-				CFA334F0252BD949006238B1 /* UsabillaConstants.swift */,
+				CF1287FF252CE06000122C07 /* UsabillaConstants.swift */,
+				CF128800252CE06000122C07 /* UsabillaRemoteCommand.swift */,
+				CF128801252CE06000122C07 /* UsabillaTracker.swift */,
 				4B28C46922FB2901002AE7FA /* TealiumUsabilla.h */,
 				4B28C46A22FB2901002AE7FA /* Info.plist */,
 			);
@@ -271,9 +271,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFA334F4252BD949006238B1 /* UsabillaRemoteCommand.swift in Sources */,
-				CFA334F3252BD949006238B1 /* UsabillaConstants.swift in Sources */,
-				CFA334F5252BD949006238B1 /* UsabillaTracker.swift in Sources */,
+				CF128804252CE06000122C07 /* UsabillaTracker.swift in Sources */,
+				CF128803252CE06000122C07 /* UsabillaRemoteCommand.swift in Sources */,
+				CF128802252CE06000122C07 /* UsabillaConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +495,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XC939GDC9P;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -509,6 +510,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tealium.TealiumUsabillaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -518,6 +520,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XC939GDC9P;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -532,6 +535,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tealium.TealiumUsabillaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

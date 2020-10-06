@@ -2,7 +2,6 @@
 //  UsabillaConstants.swift
 //  TealiumUsabilla
 //
-//  Created by Christina S on 10/5/20.
 //  Copyright © 2020 Tealium. All rights reserved.
 //
 
