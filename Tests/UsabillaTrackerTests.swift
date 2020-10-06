@@ -13,345 +13,441 @@ import TealiumRemoteCommands
 class UsabillaCommandRunnerTests: XCTestCase {
 
     let usabillaTracker = MockUsabillaTracker()
-    var usabillaCommand: UsabillaCommand!
-    var remoteCommand: TealiumRemoteCommand!
+    var usabillaCommand: UsabillaRemoteCommand!
     
     override func setUp() {
-        usabillaCommand = UsabillaCommand(usabillaTracker: usabillaTracker)
-        remoteCommand = usabillaCommand.remoteCommand()
+        usabillaCommand = UsabillaRemoteCommand(usabillaTracker: usabillaTracker)
     }
 
-    override func tearDown() {
-
-    }
-
-    func testInitializeNotCalledWithoutApiKey() {
-        let expect = expectation(description: "test initialize")
-        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
-                                                       payload: [
-                                                        "command_name": "initialize",
-                                                        ])?.description {
-            let remoteCommandResponse = TealiumRemoteCommandResponse(urlString: response)
-            if let response = remoteCommandResponse {
-                remoteCommand.remoteCommandCompletion(response)
-                
-                XCTAssertEqual(0, usabillaTracker.initializeCallCount)
-            }
-            expect.fulfill()
-        }
-        wait(for: [expect], timeout: 2.0)
-    }
-
+    // MARK: Webview Remote Command Tests
+    
     func testInitializeCalledWithAppId() {
-        let expect = expectation(description: "test initialize")
-        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
-                                                  payload: [
-                                                    "command_name": "initialize",
-                                                    "appId": "test123"
-                                                    ])?.description {
-            let remoteCommandResponse = TealiumRemoteCommandResponse(urlString: response)
-            if let response = remoteCommandResponse {
-                remoteCommand.remoteCommandCompletion(response)
-                
-                XCTAssertEqual(1, usabillaTracker.initializeCallCount)
-            }
+        let expect = expectation(description: "initialize has been called")
+        let payload = ["command_name": "initialize", "appId": "test123"]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.initializeCallCount)
+            expect.fulfill()
+        }
+        wait(for: [expect], timeout: 2.0)
+    }
+    
+    func testInitializeCalledWithAppIdAndDebug() {
+        let expect = expectation(description: "initialize has been called")
+        let payload: [String: Any] = ["command_name": "initialize", "appId": "test123", "debugEnabled": true]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.initializeCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
     }
 
+    func testInitializeNotCalledWithoutAppId() {
+        let expect = expectation(description: "initialize was not called")
+        let payload = ["command_name": "initialize"]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(0, usabillaTracker.initializeCallCount)
+            expect.fulfill()
+        }
+        wait(for: [expect], timeout: 2.0)
+    }
+    
     func testSendEventCalledWithoutEvent() {
-        let expect = expectation(description: "test initialize")
-        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
-                                                  payload: [
-                                                    "command_name": "initialize",
-                                                    "app_id": "test123"
-            ])?.description {
-            let remoteCommandResponse = TealiumRemoteCommandResponse(urlString: response)
-            if let response = remoteCommandResponse {
-                remoteCommand.remoteCommandCompletion(response)
-                
-                XCTAssertEqual(0, usabillaTracker.sendEventCallCount)
-            }
+        let expect = expectation(description: "sendEvent was not called")
+        let payload = ["command_name": "initialize,sendevent", "app_id": "test123"]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(0, usabillaTracker.sendEventCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
     }
     
     func testSendEventCalledWithEvent() {
-        let expect = expectation(description: "test send event called with event")
-        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
-                                                  payload: [
-                                                    "command_name": "initialize, sendevent",
-                                                    "appId": "test123",
-                                                    "event": "my_event"
-                                                    
-            ])?.description {
-            let remoteCommandResponse = TealiumRemoteCommandResponse(urlString: response)
-            if let response = remoteCommandResponse {
-                remoteCommand.remoteCommandCompletion(response)
-                
-                XCTAssertEqual(1, usabillaTracker.sendEventCallCount)
-            }
+        let expect = expectation(description: "sendEvent has been called")
+        let payload = ["command_name": "initialize,sendevent", "app_id": "test123", "event": "my_event"]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.sendEventCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
     }
     
     func testDisplayCampaignsNotCalledWithoutDisplayCampaignsKey() {
-        let expect = expectation(description: "test initialize")
-        let config: [String: Any] = ["response_id": "1234"]
+        let expect = expectation(description: "displayCampaigns was not called")
         let payload: [String: Any] = [
             "command_name": "initialize,display_campaigns",
             "app_id": "test123"
         ]
-        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
-                                                  config: config,
-                                                  payload: payload
-            
-            )?.description {
-            let remoteCommandResponse = TealiumRemoteCommandResponse(urlString: response)
-            if let response = remoteCommandResponse {
-                remoteCommand.remoteCommandCompletion(response)
-                
-                XCTAssertEqual(0, usabillaTracker.displayCampaignsCallCount)
-            }
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(0, usabillaTracker.displayCampaignsCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
     }
     
     func testDisplayCampaignsCalledWithDisplayCampaignsKey() {
-        let expect = expectation(description: "test initialize")
-        let config: [String: Any] = ["response_id": "1234"]
+        let expect = expectation(description: "displayCampaigns has been called")
         let payload: [String: Any] = [
             "command_name": "initialize,candisplaycampaigns",
             "appId": "test123",
             "canDisplayCampaigns": true
         ]
-        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
-                                                  config: config,
-                                                  payload: payload
-            
-            )?.description {
-            let remoteCommandResponse = TealiumRemoteCommandResponse(urlString: response)
-            if let response = remoteCommandResponse {
-                remoteCommand.remoteCommandCompletion(response)
-                
-                XCTAssertEqual(1, usabillaTracker.displayCampaignsCallCount)
-            }
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.displayCampaignsCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
     }
     
     func testLoadFeedbackFormNotCalledWithoutKey() {
-        let expect = expectation(description: "test initialize")
-        let config: [String: Any] = ["response_id": "1234"]
+        let expect = expectation(description: "loadFeedbackForm was not called")
         let payload: [String: Any] = [
             "command_name": "initialize,loadfeedbackform",
             "appId": "test123"
         ]
-        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
-                                                  config: config,
-                                                  payload: payload
-            
-            )?.description {
-            let remoteCommandResponse = TealiumRemoteCommandResponse(urlString: response)
-            if let response = remoteCommandResponse {
-                remoteCommand.remoteCommandCompletion(response)
-                
-                XCTAssertEqual(0, usabillaTracker.loadFeedbackFormCallCount)
-            }
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(0, usabillaTracker.loadFeedbackFormCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
     }
     
     func testLoadFeedbackFormCalledWithKey() {
-        let expect = expectation(description: "test load feedback form called with form id")
-        let config: [String: Any] = ["response_id": "1234"]
+        let expect = expectation(description: "loadFeedbackForm has been called")
         let payload: [String: Any] = [
             "command_name": "initialize,loadfeedbackform",
             "appId": "test123",
             "formId": "my_form_id"
         ]
-        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
-                                                  config: config,
-                                                  payload: payload
-            
-            )?.description {
-            let remoteCommandResponse = TealiumRemoteCommandResponse(urlString: response)
-            if let response = remoteCommandResponse {
-                remoteCommand.remoteCommandCompletion(response)
-                
-                XCTAssertEqual(1, usabillaTracker.loadFeedbackFormCallCount)
-            }
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.loadFeedbackFormCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
     }
     
     func testPreLoadFeedbackFormsNotCalledWithoutKey() {
-        let expect = expectation(description: "test initialize")
-        let config: [String: Any] = ["response_id": "1234"]
+        let expect = expectation(description: "preloadFeedbackForm was not called")
         let payload: [String: Any] = [
             "command_name": "initialize,preloadfeedbackforms",
             "appId": "test123",
         ]
-        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
-                                                  config: config,
-                                                  payload: payload
-            
-            )?.description {
-            let remoteCommandResponse = TealiumRemoteCommandResponse(urlString: response)
-            if let response = remoteCommandResponse {
-                remoteCommand.remoteCommandCompletion(response)
-                
-                XCTAssertEqual(0, usabillaTracker.preloadFeedbackFormCallCount)
-            }
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(0, usabillaTracker.preloadFeedbackFormCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
     }
     
     func testPreLoadFeedbackFormsCalledWithKey() {
-        let expect = expectation(description: "test initialize")
-        let config: [String: Any] = ["response_id": "1234"]
+        let expect = expectation(description: "preloadFeedbackForm has been called")
         let payload: [String: Any] = [
             "command_name": "initialize,preloadfeedbackforms",
             "appId": "test123",
             "formIds": ["form_1", "form_2"]
         ]
-        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
-                                                  config: config,
-                                                  payload: payload
-            
-            )?.description {
-            let remoteCommandResponse = TealiumRemoteCommandResponse(urlString: response)
-            if let response = remoteCommandResponse {
-                remoteCommand.remoteCommandCompletion(response)
-                
-                XCTAssertEqual(1, usabillaTracker.preloadFeedbackFormCallCount)
-            }
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.preloadFeedbackFormCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
     }
     
     func testRemoveCachedFormsCalled() {
-        let expect = expectation(description: "test initialize")
-        let config: [String: Any] = ["response_id": "1234"]
+        let expect = expectation(description: "removeCachedForms has been called")
         let payload: [String: Any] = [
             "command_name": "initialize,removecachedforms",
             "appId": "test123",
             "formIds": ["form_1", "form_2"]
         ]
-        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
-                                                  config: config,
-                                                  payload: payload
-            
-            )?.description {
-            let remoteCommandResponse = TealiumRemoteCommandResponse(urlString: response)
-            if let response = remoteCommandResponse {
-                remoteCommand.remoteCommandCompletion(response)
-                
-                XCTAssertEqual(1, usabillaTracker.removeCachedFormsCallCount)
-            }
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.removeCachedFormsCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
     }
     
     func testDismissAutomaticallyNotCalledWithoutKey() {
-        let expect = expectation(description: "test initialize")
-        let config: [String: Any] = ["response_id": "1234"]
+        let expect = expectation(description: "dismissAutomatically was not called")
         let payload: [String: Any] = [
             "command_name": "initialize,dismissautomatically",
             "appId": "test123",
         ]
-        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
-                                                  config: config,
-                                                  payload: payload
-            
-            )?.description {
-            let remoteCommandResponse = TealiumRemoteCommandResponse(urlString: response)
-            if let response = remoteCommandResponse {
-                remoteCommand.remoteCommandCompletion(response)
-                
-                XCTAssertEqual(0, usabillaTracker.dismissAutomaticallyCallCount)
-            }
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(0, usabillaTracker.dismissAutomaticallyCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
     }
     
     func testDismissAutomaticallyCalledWithKey() {
-        let expect = expectation(description: "test initialize")
-        let config: [String: Any] = ["response_id": "1234"]
+        let expect = expectation(description: "dismissAutomatically has been called")
         let payload: [String: Any] = [
             "command_name": "initialize,dismissautomatically",
             "appId": "test123",
             "dismissAutomatically": true
         ]
-        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
-                                                  config: config,
-                                                  payload: payload
-            
-            )?.description {
-            let remoteCommandResponse = TealiumRemoteCommandResponse(urlString: response)
-            if let response = remoteCommandResponse {
-                remoteCommand.remoteCommandCompletion(response)
-                
-                XCTAssertEqual(1, usabillaTracker.dismissAutomaticallyCallCount)
-            }
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.dismissAutomaticallyCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
     }
     
     func testResetCalled() {
-        let expect = expectation(description: "test initialize")
-        let config: [String: Any] = ["response_id": "1234"]
+        let expect = expectation(description: "reset has been called")
         let payload: [String: Any] = [
             "command_name": "initialize,resetcampaigndata",
             "appId": "test123",
         ]
-        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
-                                                  config: config,
-                                                  payload: payload
-            
-            )?.description {
-            let remoteCommandResponse = TealiumRemoteCommandResponse(urlString: response)
-            if let response = remoteCommandResponse {
-                remoteCommand.remoteCommandCompletion(response)
-                
-                XCTAssertEqual(1, usabillaTracker.resetCallCount)
-            }
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.resetCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
     }
     
     func testSetCustomVariablesCalledWithKey() {
-        let expect = expectation(description: "test initialize")
-        let config: [String: Any] = ["response_id": "1234"]
+        let expect = expectation(description: "setCustomVariables has been called")
         let payload: [String: Any] = [
             "command_name": "initialize,setcustomvariable",
             "appId": "test123",
             "custom": ["key": "value1", "key2": "value2", "key3": "value3"]
         ]
-        if let response = HttpTestHelpers.httpRequest(commandId: "usabilla",
-                                                  config: config,
-                                                  payload: payload
-            
-            )?.description {
-            let remoteCommandResponse = TealiumRemoteCommandResponse(urlString: response)
-            if let response = remoteCommandResponse {
-                remoteCommand.remoteCommandCompletion(response)
-                
-                XCTAssertEqual(1, usabillaTracker.setCustomVariablesCallCount)
-            }
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.setCustomVariablesCallCount)
+            expect.fulfill()
+        }
+        wait(for: [expect], timeout: 2.0)
+    }
+    
+    // MARK: JSON Remote Command Tests
+    
+    func testInitializeCalledWithAppIdJSON() {
+        let expect = expectation(description: "initialize has been called")
+        let payload = ["command_name": "initialize", "appId": "test123"]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.initializeCallCount)
+            expect.fulfill()
+        }
+        wait(for: [expect], timeout: 2.0)
+    }
+    
+    func testInitializeCalledWithAppIdAndDebugJSON() {
+        let expect = expectation(description: "initialize has been called")
+        let payload: [String: Any] = ["command_name": "initialize", "appId": "test123", "debugEnabled": true]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.initializeCallCount)
+            expect.fulfill()
+        }
+        wait(for: [expect], timeout: 2.0)
+    }
+
+    func testInitializeNotCalledWithoutAppIdJSON() {
+        let expect = expectation(description: "initialize was not called")
+        let payload = ["command_name": "initialize"]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(0, usabillaTracker.initializeCallCount)
+            expect.fulfill()
+        }
+        wait(for: [expect], timeout: 2.0)
+    }
+    
+    func testSendEventCalledWithoutEventJSON() {
+        let expect = expectation(description: "sendEvent was not called")
+        let payload = ["command_name": "initialize,sendevent", "app_id": "test123"]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(0, usabillaTracker.sendEventCallCount)
+            expect.fulfill()
+        }
+        wait(for: [expect], timeout: 2.0)
+    }
+    
+    func testSendEventCalledWithEventJSON() {
+        let expect = expectation(description: "sendEvent has been called")
+        let payload = ["command_name": "initialize,sendevent", "app_id": "test123", "event": "my_event"]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.sendEventCallCount)
+            expect.fulfill()
+        }
+        wait(for: [expect], timeout: 2.0)
+    }
+    
+    func testDisplayCampaignsNotCalledWithoutDisplayCampaignsKeyJSON() {
+        let expect = expectation(description: "displayCampaigns was not called")
+        let payload: [String: Any] = [
+            "command_name": "initialize,display_campaigns",
+            "app_id": "test123"
+        ]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(0, usabillaTracker.displayCampaignsCallCount)
+            expect.fulfill()
+        }
+        wait(for: [expect], timeout: 2.0)
+    }
+    
+    func testDisplayCampaignsCalledWithDisplayCampaignsKeyJSON() {
+        let expect = expectation(description: "displayCampaigns has been called")
+        let payload: [String: Any] = [
+            "command_name": "initialize,candisplaycampaigns",
+            "appId": "test123",
+            "canDisplayCampaigns": true
+        ]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.displayCampaignsCallCount)
+            expect.fulfill()
+        }
+        wait(for: [expect], timeout: 2.0)
+    }
+    
+    func testLoadFeedbackFormNotCalledWithoutKeyJSON() {
+        let expect = expectation(description: "loadFeedbackForm was not called")
+        let payload: [String: Any] = [
+            "command_name": "initialize,loadfeedbackform",
+            "appId": "test123"
+        ]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(0, usabillaTracker.loadFeedbackFormCallCount)
+            expect.fulfill()
+        }
+        wait(for: [expect], timeout: 2.0)
+    }
+    
+    func testLoadFeedbackFormCalledWithKeyJSON() {
+        let expect = expectation(description: "loadFeedbackForm has been called")
+        let payload: [String: Any] = [
+            "command_name": "initialize,loadfeedbackform",
+            "appId": "test123",
+            "formId": "my_form_id"
+        ]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.loadFeedbackFormCallCount)
+            expect.fulfill()
+        }
+        wait(for: [expect], timeout: 2.0)
+    }
+    
+    func testPreLoadFeedbackFormsNotCalledWithoutKeyJSON() {
+        let expect = expectation(description: "preloadFeedbackForm was not called")
+        let payload: [String: Any] = [
+            "command_name": "initialize,preloadfeedbackforms",
+            "appId": "test123",
+        ]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(0, usabillaTracker.preloadFeedbackFormCallCount)
+            expect.fulfill()
+        }
+        wait(for: [expect], timeout: 2.0)
+    }
+    
+    func testPreLoadFeedbackFormsCalledWithKeyJSON() {
+        let expect = expectation(description: "preloadFeedbackForm has been called")
+        let payload: [String: Any] = [
+            "command_name": "initialize,preloadfeedbackforms",
+            "appId": "test123",
+            "formIds": ["form_1", "form_2"]
+        ]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.preloadFeedbackFormCallCount)
+            expect.fulfill()
+        }
+        wait(for: [expect], timeout: 2.0)
+    }
+    
+    func testRemoveCachedFormsCalledJSON() {
+        let expect = expectation(description: "removeCachedForms has been called")
+        let payload: [String: Any] = [
+            "command_name": "initialize,removecachedforms",
+            "appId": "test123",
+            "formIds": ["form_1", "form_2"]
+        ]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.removeCachedFormsCallCount)
+            expect.fulfill()
+        }
+        wait(for: [expect], timeout: 2.0)
+    }
+    
+    func testDismissAutomaticallyNotCalledWithoutKeyJSON() {
+        let expect = expectation(description: "dismissAutomatically was not called")
+        let payload: [String: Any] = [
+            "command_name": "initialize,dismissautomatically",
+            "appId": "test123",
+        ]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(0, usabillaTracker.dismissAutomaticallyCallCount)
+            expect.fulfill()
+        }
+        wait(for: [expect], timeout: 2.0)
+    }
+    
+    func testDismissAutomaticallyCalledWithKeyJSON() {
+        let expect = expectation(description: "dismissAutomatically has been called")
+        let payload: [String: Any] = [
+            "command_name": "initialize,dismissautomatically",
+            "appId": "test123",
+            "dismissAutomatically": true
+        ]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.dismissAutomaticallyCallCount)
+            expect.fulfill()
+        }
+        wait(for: [expect], timeout: 2.0)
+    }
+    
+    func testResetCalledJSON() {
+        let expect = expectation(description: "reset has been called")
+        let payload: [String: Any] = [
+            "command_name": "initialize,resetcampaigndata",
+            "appId": "test123",
+        ]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.resetCallCount)
+            expect.fulfill()
+        }
+        wait(for: [expect], timeout: 2.0)
+    }
+    
+    func testSetCustomVariablesCalledWithKeyJSON() {
+        let expect = expectation(description: "setCustomVariables has been called")
+        let payload: [String: Any] = [
+            "command_name": "initialize,setcustomvariable",
+            "appId": "test123",
+            "custom": ["key": "value1", "key2": "value2", "key3": "value3"]
+        ]
+        if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
+            usabillaCommand.completion(response)
+            XCTAssertEqual(1, usabillaTracker.setCustomVariablesCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -359,7 +455,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
 }
 
 class MockUsabillaTracker: UsabillaTrackable {
-    
+
     var initializeCallCount = 0
     var sendEventCallCount = 0
     var resetCampaignDataCallCount = 0
@@ -399,6 +495,10 @@ class MockUsabillaTracker: UsabillaTrackable {
         initializeCallCount += 1
     }
     
+    func initialize(appID: String?, debug: Bool) {
+        initializeCallCount += 1
+    }
+    
     func initialize(appID: String?, completion: (() -> Void)?) {
         initializeCallCount += 1
     }
@@ -434,6 +534,5 @@ class MockUsabillaTracker: UsabillaTrackable {
     func reset() {
         resetCallCount += 1
     }
-    
     
 }

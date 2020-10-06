@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
     # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
     s.name         = "TealiumUsabilla"
     s.module_name  = "TealiumUsabilla"
-    s.version      = "0.0.2"
+    s.version      = "1.0.0"
     s.summary      = "Tealium Swift and Usabilla integration"
     s.description  = <<-DESC
     Tealium's integration with Usabilla for iOS.
@@ -31,10 +31,9 @@ Pod::Spec.new do |s|
     s.ios.source_files      = "Sources/*.{swift}"
 
     # ――― Dependencies ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-    s.ios.dependency 'tealium-swift/Core'
-    s.ios.dependency 'tealium-swift/TealiumRemoteCommands'
-    s.ios.dependency 'tealium-swift/TealiumDelegate'
-    s.ios.dependency 'tealium-swift/TealiumTagManagement'
-    s.ios.dependency 'Usabilla', '~> 6.4.5'
+    s.ios.dependency 'tealium-swift/Core', '~> 2.1'
+    s.ios.dependency 'tealium-swift/RemoteCommands', '~> 2.1'
+    s.ios.dependency 'tealium-swift/TagManagement', '~> 2.1'
+    s.ios.dependency 'Usabilla', '~> 6.5'
 
 end
