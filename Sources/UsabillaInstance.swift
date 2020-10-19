@@ -1,5 +1,5 @@
 //
-//  UsabillaTracker.swift
+//  UsabillaInstance.swift
 //  TealiumUsabilla
 //
 //  Copyright © 2019 Tealium. All rights reserved.
@@ -15,7 +15,7 @@ import TealiumTagManagement
 import TealiumRemoteCommands
 #endif
 
-public protocol UsabillaTrackable {
+public protocol UsabillaCommand {
 
     var debugEnabled: Bool { get set }
     
@@ -48,7 +48,7 @@ public protocol UsabillaTrackable {
 }
 
 
-public class UsabillaTracker: UsabillaTrackable {
+public class UsabillaInstance: UsabillaCommand {
     
     weak var tealium: Tealium?
     
@@ -124,7 +124,7 @@ public class UsabillaTracker: UsabillaTrackable {
     }
 }
 
-extension UsabillaTracker: UsabillaDelegate {
+extension UsabillaInstance: UsabillaDelegate {
     
     public func formDidLoad(form: UINavigationController) {
         tealiumTrack(title: "usabilla_form_did_load")

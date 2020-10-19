@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		4B28C47022FB2901002AE7FA /* TealiumUsabilla.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B28C46622FB2901002AE7FA /* TealiumUsabilla.framework */; };
 		4B28C47722FB2901002AE7FA /* TealiumUsabilla.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B28C46922FB2901002AE7FA /* TealiumUsabilla.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4B28C48522FB3B08002AE7FA /* UsabillaTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B28C48422FB3B08002AE7FA /* UsabillaTrackerTests.swift */; };
+		4B28C48522FB3B08002AE7FA /* UsabillaInstanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B28C48422FB3B08002AE7FA /* UsabillaInstanceTests.swift */; };
 		CF1287E1252CD66900122C07 /* TealiumCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CFBA50B32304DC8600EF52BC /* TealiumCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF1287E2252CD66900122C07 /* TealiumRemoteCommands.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CFBA50B52304DC8600EF52BC /* TealiumRemoteCommands.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF128802252CE06000122C07 /* UsabillaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1287FF252CE06000122C07 /* UsabillaConstants.swift */; };
 		CF128803252CE06000122C07 /* UsabillaRemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF128800252CE06000122C07 /* UsabillaRemoteCommand.swift */; };
-		CF128804252CE06000122C07 /* UsabillaTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF128801252CE06000122C07 /* UsabillaTracker.swift */; };
+		CF128804252CE06000122C07 /* UsabillaInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF128801252CE06000122C07 /* UsabillaInstance.swift */; };
 		CFA33512252BDA9D006238B1 /* TealiumCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBA50B32304DC8600EF52BC /* TealiumCore.framework */; };
 		CFA33513252BDA9D006238B1 /* TealiumCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFBA50B32304DC8600EF52BC /* TealiumCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFA33514252BDA9D006238B1 /* TealiumRemoteCommands.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBA50B52304DC8600EF52BC /* TealiumRemoteCommands.framework */; };
@@ -72,10 +72,10 @@
 		4B28C46A22FB2901002AE7FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B28C46F22FB2901002AE7FA /* TealiumUsabillaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TealiumUsabillaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B28C47622FB2901002AE7FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4B28C48422FB3B08002AE7FA /* UsabillaTrackerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaTrackerTests.swift; sourceTree = "<group>"; };
+		4B28C48422FB3B08002AE7FA /* UsabillaInstanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaInstanceTests.swift; sourceTree = "<group>"; };
 		CF1287FF252CE06000122C07 /* UsabillaConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaConstants.swift; sourceTree = "<group>"; };
 		CF128800252CE06000122C07 /* UsabillaRemoteCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaRemoteCommand.swift; sourceTree = "<group>"; };
-		CF128801252CE06000122C07 /* UsabillaTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaTracker.swift; sourceTree = "<group>"; };
+		CF128801252CE06000122C07 /* UsabillaInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaInstance.swift; sourceTree = "<group>"; };
 		CFBA50B12304DC8600EF52BC /* TealiumTagManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumTagManagement.framework; path = Carthage/Build/iOS/TealiumTagManagement.framework; sourceTree = "<group>"; };
 		CFBA50B22304DC8600EF52BC /* Usabilla.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Usabilla.framework; path = Carthage/Build/iOS/Usabilla.framework; sourceTree = "<group>"; };
 		CFBA50B32304DC8600EF52BC /* TealiumCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TealiumCore.framework; path = Carthage/Build/iOS/TealiumCore.framework; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 			children = (
 				CF1287FF252CE06000122C07 /* UsabillaConstants.swift */,
 				CF128800252CE06000122C07 /* UsabillaRemoteCommand.swift */,
-				CF128801252CE06000122C07 /* UsabillaTracker.swift */,
+				CF128801252CE06000122C07 /* UsabillaInstance.swift */,
 				4B28C46922FB2901002AE7FA /* TealiumUsabilla.h */,
 				4B28C46A22FB2901002AE7FA /* Info.plist */,
 			);
@@ -144,7 +144,7 @@
 		4B28C47322FB2901002AE7FA /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				4B28C48422FB3B08002AE7FA /* UsabillaTrackerTests.swift */,
+				4B28C48422FB3B08002AE7FA /* UsabillaInstanceTests.swift */,
 				CFBA50BE2304DD6F00EF52BC /* HttpTestHelpers.swift */,
 				4B28C47622FB2901002AE7FA /* Info.plist */,
 			);
@@ -271,7 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF128804252CE06000122C07 /* UsabillaTracker.swift in Sources */,
+				CF128804252CE06000122C07 /* UsabillaInstance.swift in Sources */,
 				CF128803252CE06000122C07 /* UsabillaRemoteCommand.swift in Sources */,
 				CF128802252CE06000122C07 /* UsabillaConstants.swift in Sources */,
 			);
@@ -281,7 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B28C48522FB3B08002AE7FA /* UsabillaTrackerTests.swift in Sources */,
+				4B28C48522FB3B08002AE7FA /* UsabillaInstanceTests.swift in Sources */,
 				CFBA50BF2304DD6F00EF52BC /* HttpTestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

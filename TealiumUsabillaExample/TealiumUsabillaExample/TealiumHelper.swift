@@ -7,7 +7,7 @@
 
 import Foundation
 import TealiumSwift
-//import TealiumUsabilla
+import TealiumUsabilla
 
 enum TealiumConfiguration {
     static let account = "tealiummobile"
@@ -26,8 +26,7 @@ class TealiumHelper {
     var tealium: Tealium?
     
     // JSON Remote Command
-    //let usabillaRemoteCommand = UsabillaRemoteCommand(type: .remote(url: "https://tags.tiqcdn.com/dle/tealiummobile/demo/usabilla.json"))
-    let usabillaRemoteCommand = UsabillaRemoteCommand(type: .local(file: "usabilla"))
+    let usabillaRemoteCommand = UsabillaRemoteCommand(type: .remote(url: "https://tags.tiqcdn.com/dle/tealiummobile/demo/usabilla.json"))
     
     private init() {
         config.shouldUseRemotePublishSettings = false

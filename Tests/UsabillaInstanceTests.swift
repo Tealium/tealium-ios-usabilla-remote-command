@@ -1,6 +1,6 @@
 //
-//  UsabillaTrackerTests.swift
-//  RemoteCommandModulesTests
+//  UsabillaInstanceTests.swift
+//  TealiumUsabillaTests
 //
 //  Copyright © 2019 Tealium. All rights reserved.
 //
@@ -9,13 +9,13 @@ import XCTest
 @testable import TealiumUsabilla
 import TealiumRemoteCommands
 
-class UsabillaCommandRunnerTests: XCTestCase {
+class UsabillaInstanceTests: XCTestCase {
 
-    let usabillaTracker = MockUsabillaTracker()
+    let usabillaInstance = MockUsabillaInstance()
     var usabillaCommand: UsabillaRemoteCommand!
     
     override func setUp() {
-        usabillaCommand = UsabillaRemoteCommand(usabillaTracker: usabillaTracker)
+        usabillaCommand = UsabillaRemoteCommand(usabillaInstance: usabillaInstance)
     }
 
     // MARK: Webview Remote Command Tests
@@ -25,7 +25,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let payload = ["command_name": "initialize", "appId": "test123"]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.initializeCallCount)
+            XCTAssertEqual(1, usabillaInstance.initializeCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -36,7 +36,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let payload: [String: Any] = ["command_name": "initialize", "appId": "test123", "debugEnabled": true]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.initializeCallCount)
+            XCTAssertEqual(1, usabillaInstance.initializeCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -47,7 +47,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let payload = ["command_name": "initialize"]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(0, usabillaTracker.initializeCallCount)
+            XCTAssertEqual(0, usabillaInstance.initializeCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -58,7 +58,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let payload = ["command_name": "initialize,sendevent", "app_id": "test123"]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(0, usabillaTracker.sendEventCallCount)
+            XCTAssertEqual(0, usabillaInstance.sendEventCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -69,7 +69,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let payload = ["command_name": "initialize,sendevent", "app_id": "test123", "event": "my_event"]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.sendEventCallCount)
+            XCTAssertEqual(1, usabillaInstance.sendEventCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -83,7 +83,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(0, usabillaTracker.displayCampaignsCallCount)
+            XCTAssertEqual(0, usabillaInstance.displayCampaignsCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -98,7 +98,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.displayCampaignsCallCount)
+            XCTAssertEqual(1, usabillaInstance.displayCampaignsCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -112,7 +112,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(0, usabillaTracker.loadFeedbackFormCallCount)
+            XCTAssertEqual(0, usabillaInstance.loadFeedbackFormCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -127,7 +127,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.loadFeedbackFormCallCount)
+            XCTAssertEqual(1, usabillaInstance.loadFeedbackFormCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -141,7 +141,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(0, usabillaTracker.preloadFeedbackFormCallCount)
+            XCTAssertEqual(0, usabillaInstance.preloadFeedbackFormCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -156,7 +156,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.preloadFeedbackFormCallCount)
+            XCTAssertEqual(1, usabillaInstance.preloadFeedbackFormCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -171,7 +171,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.removeCachedFormsCallCount)
+            XCTAssertEqual(1, usabillaInstance.removeCachedFormsCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -185,7 +185,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(0, usabillaTracker.dismissAutomaticallyCallCount)
+            XCTAssertEqual(0, usabillaInstance.dismissAutomaticallyCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -200,7 +200,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.dismissAutomaticallyCallCount)
+            XCTAssertEqual(1, usabillaInstance.dismissAutomaticallyCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -214,7 +214,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.resetCallCount)
+            XCTAssertEqual(1, usabillaInstance.resetCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -229,7 +229,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .webview, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.setCustomVariablesCallCount)
+            XCTAssertEqual(1, usabillaInstance.setCustomVariablesCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -242,7 +242,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let payload = ["command_name": "initialize", "appId": "test123"]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.initializeCallCount)
+            XCTAssertEqual(1, usabillaInstance.initializeCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -253,7 +253,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let payload: [String: Any] = ["command_name": "initialize", "appId": "test123", "debugEnabled": true]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.initializeCallCount)
+            XCTAssertEqual(1, usabillaInstance.initializeCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -264,7 +264,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let payload = ["command_name": "initialize"]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(0, usabillaTracker.initializeCallCount)
+            XCTAssertEqual(0, usabillaInstance.initializeCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -275,7 +275,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let payload = ["command_name": "initialize,sendevent", "app_id": "test123"]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(0, usabillaTracker.sendEventCallCount)
+            XCTAssertEqual(0, usabillaInstance.sendEventCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -286,7 +286,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         let payload = ["command_name": "initialize,sendevent", "app_id": "test123", "event": "my_event"]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.sendEventCallCount)
+            XCTAssertEqual(1, usabillaInstance.sendEventCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -300,7 +300,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(0, usabillaTracker.displayCampaignsCallCount)
+            XCTAssertEqual(0, usabillaInstance.displayCampaignsCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -315,7 +315,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.displayCampaignsCallCount)
+            XCTAssertEqual(1, usabillaInstance.displayCampaignsCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -329,7 +329,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(0, usabillaTracker.loadFeedbackFormCallCount)
+            XCTAssertEqual(0, usabillaInstance.loadFeedbackFormCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -344,7 +344,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.loadFeedbackFormCallCount)
+            XCTAssertEqual(1, usabillaInstance.loadFeedbackFormCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -358,7 +358,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(0, usabillaTracker.preloadFeedbackFormCallCount)
+            XCTAssertEqual(0, usabillaInstance.preloadFeedbackFormCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -373,7 +373,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.preloadFeedbackFormCallCount)
+            XCTAssertEqual(1, usabillaInstance.preloadFeedbackFormCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -388,7 +388,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.removeCachedFormsCallCount)
+            XCTAssertEqual(1, usabillaInstance.removeCachedFormsCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -402,7 +402,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(0, usabillaTracker.dismissAutomaticallyCallCount)
+            XCTAssertEqual(0, usabillaInstance.dismissAutomaticallyCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -417,7 +417,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.dismissAutomaticallyCallCount)
+            XCTAssertEqual(1, usabillaInstance.dismissAutomaticallyCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -431,7 +431,7 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.resetCallCount)
+            XCTAssertEqual(1, usabillaInstance.resetCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
@@ -446,14 +446,14 @@ class UsabillaCommandRunnerTests: XCTestCase {
         ]
         if let response = HttpTestHelpers.createRemoteCommandResponse(type: .JSON, commandId: "usabilla", payload: payload) {
             usabillaCommand.completion(response)
-            XCTAssertEqual(1, usabillaTracker.setCustomVariablesCallCount)
+            XCTAssertEqual(1, usabillaInstance.setCustomVariablesCallCount)
             expect.fulfill()
         }
         wait(for: [expect], timeout: 2.0)
     }
 }
 
-class MockUsabillaTracker: UsabillaTrackable {
+class MockUsabillaInstance: UsabillaCommand {
 
     var initializeCallCount = 0
     var sendEventCallCount = 0

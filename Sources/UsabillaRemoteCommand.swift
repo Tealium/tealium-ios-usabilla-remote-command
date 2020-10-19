@@ -17,11 +17,11 @@ import TealiumRemoteCommands
 
 public class UsabillaRemoteCommand: RemoteCommand {
     
-    var usabillaTracker: UsabillaTrackable?
+    var usabillaInstance: UsabillaCommand?
 
-    public init(usabillaTracker: UsabillaTrackable = UsabillaTracker(),
+    public init(usabillaInstance: UsabillaCommand = UsabillaInstance(),
                 type: RemoteCommandType = .webview) {
-        self.usabillaTracker = usabillaTracker
+        self.usabillaInstance = usabillaInstance
         weak var selfWorkaround: UsabillaRemoteCommand?
         super.init(commandId: UsabillaConstants.commandId,
                    description: UsabillaConstants.description,
@@ -35,7 +35,7 @@ public class UsabillaRemoteCommand: RemoteCommand {
         selfWorkaround = self
     }
     func processRemoteCommand(with payload: [String: Any]) {
-        guard var usabillaTracker = usabillaTracker,
+        guard var usabillaInstance = usabillaInstance,
         let command = payload[UsabillaConstants.commandName] as? String else {
             return
         }
@@ -51,47 +51,47 @@ public class UsabillaRemoteCommand: RemoteCommand {
                         return
                     }
                     if let debugEnabled = payload[UsabillaConstants.Keys.debugEnabled] as? Bool {
-                        return usabillaTracker.initialize(appID: appID, debug: debugEnabled)
+                        return usabillaInstance.initialize(appID: appID, debug: debugEnabled)
                     }
-                    usabillaTracker.initialize(appID: appID)
+                    usabillaInstance.initialize(appID: appID)
                 case .sendEvent:
                     guard let event = payload[UsabillaConstants.Keys.event] as? String else {
                         return
                     }
-                    usabillaTracker.sendEvent(event: event)
+                    usabillaInstance.sendEvent(event: event)
                 case .displayCampaigns:
                     guard let displayCampaigns = payload[UsabillaConstants.Keys.displayCampaigns] as? Bool else {
                         return
                     }
-                    usabillaTracker.displayCampaigns = displayCampaigns
+                    usabillaInstance.displayCampaigns = displayCampaigns
                 case .loadFeedbackForm:
                     guard let formID = payload[UsabillaConstants.Keys.formID] as? String else {
                         return
                     }
-                    usabillaTracker.loadFeedbackForm(formID: formID)
+                    usabillaInstance.loadFeedbackForm(formID: formID)
                 case .preloadFeedbackForms:
                     guard let formIDs = payload[UsabillaConstants.Keys.formIDs] as? [String] else {
                         return
                     }
-                    usabillaTracker.preloadFeedbackForms(with: formIDs)
+                    usabillaInstance.preloadFeedbackForms(with: formIDs)
                 case .removeCachedForms:
-                    usabillaTracker.removeCachedForms()
+                    usabillaInstance.removeCachedForms()
                 case .dismissAutomatically:
                     guard let dismissAutomatically = payload[UsabillaConstants.Keys.dismissAutomatically] as? Bool else {
                         return
                     }
-                    usabillaTracker.dismissAutomatically(dismissAutomatically)
+                    usabillaInstance.dismissAutomatically(dismissAutomatically)
                 case .setCustomVariables:
                     if let customVariables = payload[UsabillaConstants.Keys.customPrefix] as? [String: Any] {
-                        usabillaTracker.setCustomVariables(customVariables)
+                        usabillaInstance.setCustomVariables(customVariables)
                     } else {
                         let customVariables = payload.filter { key, value in
                             key.starts(with: UsabillaConstants.Keys.customPrefix)
                         }
-                        usabillaTracker.setCustomVariables(customVariables)
+                        usabillaInstance.setCustomVariables(customVariables)
                     }
                 case .reset:
-                    usabillaTracker.reset()
+                    usabillaInstance.reset()
                 default:
                     break
             }
