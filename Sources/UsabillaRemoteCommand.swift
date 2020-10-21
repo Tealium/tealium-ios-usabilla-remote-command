@@ -22,7 +22,7 @@ public class UsabillaRemoteCommand: RemoteCommand {
     public init(usabillaInstance: UsabillaCommand = UsabillaInstance(),
                 type: RemoteCommandType = .webview) {
         self.usabillaInstance = usabillaInstance
-        weak var selfWorkaround: UsabillaRemoteCommand?
+        weak var weakSelf: UsabillaRemoteCommand?
         super.init(commandId: UsabillaConstants.commandId,
                    description: UsabillaConstants.description,
             type: type,
@@ -30,9 +30,9 @@ public class UsabillaRemoteCommand: RemoteCommand {
                 guard let payload = response.payload else {
                     return
                 }
-                selfWorkaround?.processRemoteCommand(with: payload)
+                weakSelf?.processRemoteCommand(with: payload)
             })
-        selfWorkaround = self
+        weakSelf = self
     }
     func processRemoteCommand(with payload: [String: Any]) {
         guard var usabillaInstance = usabillaInstance,
