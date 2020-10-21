@@ -6,11 +6,7 @@ target 'TealiumUsabillaExample' do
   use_frameworks!
 
   # Pods for TealiumUsabillaExample
-  pod 'TealiumUsabilla'
-  pod 'tealium-swift/TealiumLogger'
-  pod 'tealium-swift/TealiumTagManagement'
-  pod 'tealium-swift/TealiumAppData'
-  pod 'tealium-swift/TealiumDeviceData'
-  pod 'tealium-swift/TealiumLifecycle'
-  
+  pod 'TealiumUsabilla', :path=> '../'
+  pod 'tealium-swift/Lifecycle', '~> 2.1'
+
 end

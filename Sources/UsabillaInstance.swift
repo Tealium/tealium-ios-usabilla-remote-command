@@ -1,8 +1,7 @@
 //
-//  UsabillaTracker.swift
-//  RemoteCommandModules
+//  UsabillaInstance.swift
+//  TealiumUsabilla
 //
-//  Created by Jonathan Wong on 4/2/19.
 //  Copyright © 2019 Tealium. All rights reserved.
 //
 
@@ -12,20 +11,20 @@ import Usabilla
 import TealiumSwift
 #else
 import TealiumCore
-import TealiumDelegate
 import TealiumTagManagement
 import TealiumRemoteCommands
 #endif
 
-public protocol UsabillaTrackable {
+public protocol UsabillaCommand {
 
-    
     var debugEnabled: Bool { get set }
     
     var displayCampaigns: Bool { get set }
     
     // MARK: Initialization
     func initialize(appID: String?)
+    
+    func initialize(appID: String?, debug: Bool)
     
     func initialize(appID: String?, completion: (() -> Void)?)
     
@@ -49,7 +48,7 @@ public protocol UsabillaTrackable {
 }
 
 
-public class UsabillaTracker: UsabillaTrackable {
+public class UsabillaInstance: UsabillaCommand {
     
     weak var tealium: Tealium?
     
@@ -81,6 +80,11 @@ public class UsabillaTracker: UsabillaTrackable {
     
     public func initialize(appID: String?) {
         Usabilla.initialize(appID: appID)
+    }
+    
+    public func initialize(appID: String?, debug: Bool) {
+        Usabilla.initialize(appID: appID)
+        debugEnabled = debug
     }
     
     public func initialize(appID: String?, completion: (() -> Void)?) {
@@ -120,39 +124,42 @@ public class UsabillaTracker: UsabillaTrackable {
     }
 }
 
-extension UsabillaTracker: UsabillaDelegate {
+extension UsabillaInstance: UsabillaDelegate {
     
     public func formDidLoad(form: UINavigationController) {
-        tealium?.track(title: "usabilla_form_did_load")
+        tealiumTrack(title: "usabilla_form_did_load")
     }
     
     public func formDidFailLoading(error: UBError) {
-        tealium?.track(title: "usabilla_form_load_error",
-                       data: ["error": error.description],
-                       completion: nil)
+        tealiumTrack(title: "usabilla_form_load_error",
+                       data: ["error": error.description])
     }
     
     public func formDidClose(formID: String, withFeedbackResults results: [FeedbackResult], isRedirectToAppStoreEnabled: Bool) {
         let validResults = results.filter { feedbackResult in
             feedbackResult.abandonedPageIndex != nil && feedbackResult.rating != nil
         }
-        tealium?.track(title: "usabilla_form_did_close",
-                       data: ["usabilla_feedback_results": validResults],
-                       completion: nil)
+        tealiumTrack(title: "usabilla_form_did_close",
+                       data: ["usabilla_feedback_results": validResults])
     }
     
     public func campaignDidClose(withFeedbackResult result: FeedbackResult, isRedirectToAppStoreEnabled: Bool) {
         guard let rating = result.rating, let abandonedPageIndex = result.abandonedPageIndex else {
-            tealium?.track(title: "usabilla_form_closed")
+            tealiumTrack(title: "usabilla_form_closed")
             return
         }
         
-        tealium?.track(title: "usabilla_form_closed",
+        tealiumTrack(title: "usabilla_form_closed",
                        data: [
                         "usabilla_rating": rating,
                         "usabilla_abandoned_page_index": abandonedPageIndex,
                         "usabilla_sent": result.sent
-            ], completion: nil)
+                    ])
+    }
+    
+    private func tealiumTrack(title: String, data: [String: Any]? = nil) {
+        let event = TealiumEvent(title, dataLayer: data)
+        tealium?.track(event)
     }
 }
 

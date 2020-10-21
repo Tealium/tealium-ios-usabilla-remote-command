@@ -2,7 +2,6 @@
 //  ViewController.swift
 //  TealiumUsabillaExample
 //
-//  Created by Christina Sund on 8/14/19.
 //  Copyright © 2019 Tealium. All rights reserved.
 //
 
@@ -18,13 +17,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func displayCampaigns(_ sender: UISwitch) {
-        let displayCampaigns = sender.isOn ? "true" : "false"
-        TealiumHelper.trackEvent(title: "display_campaigns", data: ["display_campaigns": displayCampaigns])
+        TealiumHelper.trackEvent(title: "display_campaigns", data: ["display_campaigns": sender.isOn])
     }
     
     @IBAction func dismissForms(_ sender: UISwitch) {
-        let dismissAutomatically = sender.isOn ? "true" : "false"
-        TealiumHelper.trackEvent(title: "dismiss", data: ["dismiss_automatically": dismissAutomatically])
+        TealiumHelper.trackEvent(title: "dismiss", data: ["dismiss_automatically": sender.isOn])
     }
     
     @IBAction func sendEvent(_ sender: UIButton) {
@@ -32,7 +29,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func loadFeedbackFrom(_ sender: UIButton) {
-        TealiumHelper.trackEvent(title: "load_form", data: nil)
+        TealiumHelper.trackEvent(title: "load_form", data: ["form_id": "abc123"])
     }
     
     @IBAction func setCustomVariable(_ sender: UIButton) {
