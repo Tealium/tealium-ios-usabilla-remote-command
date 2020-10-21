@@ -10,7 +10,7 @@ PODS:
     - tealium-swift/Core (~> 2.1)
     - tealium-swift/RemoteCommands (~> 2.1)
     - tealium-swift/TagManagement (~> 2.1)
-    - Usabilla (~> 6.5)
+    - Usabilla (~> 6.4)
   - Usabilla (6.5.0)
 
 DEPENDENCIES:
@@ -28,7 +28,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   tealium-swift: a670c2c6f3e7e5d775d9507387e8858a8541e526
-  TealiumUsabilla: 2d5ea1ee0f69ea7de83e7de2a416b764db09ad2a
+  TealiumUsabilla: a562151e00fb15865c96e938de7f2f1cccf86e76
   Usabilla: 425b78ee09659fdaa420a09d0d89d91c7aed8608
 
 PODFILE CHECKSUM: 44c32c2813674e3e3195603b822440eea0ea211e

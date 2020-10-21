@@ -25,8 +25,8 @@ Pod::Spec.new do |s|
     s.ios.deployment_target = "10.0"
 
     # ――― Excluded Archs ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-    s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
-    s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }        
+    s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 i386' }
+    s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 i386' }        
 
     # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
     s.source       = { :git => "https://github.com/Tealium/tealium-ios-usabilla-remote-command.git", :tag => "#{s.version}" }
@@ -38,6 +38,6 @@ Pod::Spec.new do |s|
     s.ios.dependency 'tealium-swift/Core', '~> 2.1'
     s.ios.dependency 'tealium-swift/RemoteCommands', '~> 2.1'
     s.ios.dependency 'tealium-swift/TagManagement', '~> 2.1'
-    s.ios.dependency 'Usabilla', '~> 6.5'
+    s.ios.dependency 'Usabilla', '~> 6.4'
 
 end
