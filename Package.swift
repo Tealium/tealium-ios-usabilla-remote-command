@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.5
 import PackageDescription
 
 let package = Package(
@@ -10,17 +10,23 @@ let package = Package(
         .library(name: "TealiumUsabilla", targets: ["TealiumUsabilla"])
     ],
     dependencies: [
-        .package(url: "https://github.com/tealium/tealium-swift", from: "2.1.0"),
-        .package(url: "https://github.com/usabilla/usabilla-u4a-ios-swift-sdk", from: "6.5.0")
+        .package(name: "TealiumSwift", url: "https://github.com/tealium/tealium-swift", from: "2.5.0"),
+        .package(name: "Usabilla", url: "https://github.com/usabilla/usabilla-u4a-ios-swift-sdk", from: "6.10.0")
     ],
     targets: [
         .target(
             name: "TealiumUsabilla",
-            dependencies: ["Usabilla", "TealiumCore", "TealiumRemoteCommands", "TealiumTagManagement"],
-            path: "./Sources"),
+            dependencies: [
+                .product(name: "Usabilla", package: "Usabilla"),
+                .product(name: "TealiumCore", package: "TealiumSwift"),
+                .product(name: "TealiumRemoteCommands", package: "TealiumSwift")
+            ],
+            path: "./Sources",
+            exclude: ["Support"]),
         .testTarget(
             name: "TealiumUsabillaTests",
             dependencies: ["TealiumUsabilla"],
-            path: "./Tests")
+            path: "./Tests",
+            exclude: ["Support"])
     ]
 )

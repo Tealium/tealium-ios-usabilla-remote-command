@@ -55,11 +55,11 @@
 		15E8E126277DBC0500F50872 /* TealiumRemoteCommands.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TealiumRemoteCommands.xcframework; path = Carthage/Build/TealiumRemoteCommands.xcframework; sourceTree = "<group>"; };
 		15E8E141277DBC0600F50872 /* Usabilla.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Usabilla.xcframework; path = Carthage/Build/Usabilla.xcframework; sourceTree = "<group>"; };
 		15E8E142277DBC0600F50872 /* TealiumCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TealiumCore.xcframework; path = Carthage/Build/TealiumCore.xcframework; sourceTree = "<group>"; };
+		15E8E157277DE3F600F50872 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15E8E15A277DE40000F50872 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B28C46622FB2901002AE7FA /* TealiumUsabilla.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TealiumUsabilla.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B28C46922FB2901002AE7FA /* TealiumUsabilla.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TealiumUsabilla.h; sourceTree = "<group>"; };
-		4B28C46A22FB2901002AE7FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B28C46F22FB2901002AE7FA /* TealiumUsabillaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TealiumUsabillaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B28C47622FB2901002AE7FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B28C48422FB3B08002AE7FA /* UsabillaInstanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaInstanceTests.swift; sourceTree = "<group>"; };
 		CF1287FF252CE06000122C07 /* UsabillaConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaConstants.swift; sourceTree = "<group>"; };
 		CF128800252CE06000122C07 /* UsabillaRemoteCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaRemoteCommand.swift; sourceTree = "<group>"; };
@@ -89,6 +89,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15E8E156277DE3F600F50872 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				15E8E157277DE3F600F50872 /* Info.plist */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		15E8E159277DE40000F50872 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				15E8E15A277DE40000F50872 /* Info.plist */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		4B28C45C22FB2901002AE7FA = {
 			isa = PBXGroup;
 			children = (
@@ -111,11 +127,11 @@
 		4B28C46822FB2901002AE7FA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				15E8E156277DE3F600F50872 /* Support */,
 				CF1287FF252CE06000122C07 /* UsabillaConstants.swift */,
 				CF128800252CE06000122C07 /* UsabillaRemoteCommand.swift */,
 				CF128801252CE06000122C07 /* UsabillaInstance.swift */,
 				4B28C46922FB2901002AE7FA /* TealiumUsabilla.h */,
-				4B28C46A22FB2901002AE7FA /* Info.plist */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -123,9 +139,9 @@
 		4B28C47322FB2901002AE7FA /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				15E8E159277DE40000F50872 /* Support */,
 				4B28C48422FB3B08002AE7FA /* UsabillaInstanceTests.swift */,
 				CFBA50BE2304DD6F00EF52BC /* HttpTestHelpers.swift */,
-				4B28C47622FB2901002AE7FA /* Info.plist */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -416,7 +432,7 @@
 					"$(PROJECT_DIR)/Carthage/Build",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Support/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -451,7 +467,7 @@
 					"$(PROJECT_DIR)/Carthage/Build",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Support/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -479,7 +495,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build",
 				);
-				INFOPLIST_FILE = Tests/Info.plist;
+				INFOPLIST_FILE = Tests/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -504,7 +520,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build",
 				);
-				INFOPLIST_FILE = Tests/Info.plist;
+				INFOPLIST_FILE = Tests/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
