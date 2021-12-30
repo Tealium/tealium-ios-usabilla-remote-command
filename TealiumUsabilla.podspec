@@ -21,8 +21,7 @@ Pod::Spec.new do |s|
 
     # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
     s.swift_version = "5.0"
-    s.platform     = :ios, "10.0"
-    s.ios.deployment_target = "10.0"
+    s.platform     = :ios, "11.0"
 
     # ――― Excluded Archs ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
     s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 i386' }
@@ -35,9 +34,9 @@ Pod::Spec.new do |s|
     s.ios.source_files      = "Sources/*.{swift}"
 
     # ――― Dependencies ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-    s.ios.dependency 'tealium-swift/Core', '~> 2.1'
-    s.ios.dependency 'tealium-swift/RemoteCommands', '~> 2.1'
-    s.ios.dependency 'tealium-swift/TagManagement', '~> 2.1'
-    s.ios.dependency 'Usabilla', '~> 6.4'
+    s.ios.dependency 'tealium-swift/Core', '~> 2.5'
+    s.ios.dependency 'tealium-swift/RemoteCommands', '~> 2.5'
+    s.ios.dependency 'tealium-swift/TagManagement', '~> 2.5'
+    s.ios.dependency 'Usabilla', '~> 6.10'
 
 end

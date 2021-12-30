@@ -11,7 +11,6 @@ import Usabilla
 import TealiumSwift
 #else
 import TealiumCore
-import TealiumTagManagement
 import TealiumRemoteCommands
 #endif
 
@@ -116,7 +115,11 @@ public class UsabillaInstance: UsabillaCommand {
     }
     
     public func setCustomVariables(_ customVariables: [String: Any]) {
-        Usabilla.customVariables = customVariables
+        let kvPairs = customVariables.map { ($0, String(describing: $1)) }
+        let stringDictionary = [String:String](kvPairs) { first, _ in
+            first
+        }
+        Usabilla.customVariables = stringDictionary
     }
     
     public func reset() {
