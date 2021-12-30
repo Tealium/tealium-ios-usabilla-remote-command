@@ -17,7 +17,9 @@ import TealiumRemoteCommands
 public class UsabillaRemoteCommand: RemoteCommand {
     
     var usabillaInstance: UsabillaCommand?
-
+    public override var version: String? {
+        return UsabillaConstants.version
+    }
     public init(usabillaInstance: UsabillaCommand = UsabillaInstance(),
                 type: RemoteCommandType = .webview) {
         self.usabillaInstance = usabillaInstance
