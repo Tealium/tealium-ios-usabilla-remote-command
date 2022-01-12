@@ -10,8 +10,8 @@ let package = Package(
         .library(name: "TealiumUsabilla", targets: ["TealiumUsabilla"])
     ],
     dependencies: [
-        .package(name: "TealiumSwift", url: "https://github.com/tealium/tealium-swift", from: "2.6.0"),
-        .package(name: "Usabilla", url: "https://github.com/usabilla/usabilla-u4a-ios-swift-sdk", from: "6.10.0")
+        .package(name: "TealiumSwift", url: "https://github.com/tealium/tealium-swift", .upToNextMajor(from: "2.6.0")),
+        .package(name: "Usabilla", url: "https://github.com/usabilla/usabilla-u4a-ios-swift-sdk", .upToNextMajor(from: "6.10.0"))
     ],
     targets: [
         .target(
