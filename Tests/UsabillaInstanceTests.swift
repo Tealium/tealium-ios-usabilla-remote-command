@@ -7,7 +7,6 @@
 
 import XCTest
 @testable import TealiumUsabilla
-import TealiumRemoteCommands
 
 class UsabillaInstanceTests: XCTestCase {
 

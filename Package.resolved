@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "TealiumSwift",
+        "repositoryURL": "https://github.com/tealium/tealium-swift",
+        "state": {
+          "branch": null,
+          "revision": "9bd74f09c780862de61101bd147b1c6b232f98ce",
+          "version": "2.5.1"
+        }
+      },
+      {
+        "package": "Usabilla",
+        "repositoryURL": "https://github.com/usabilla/usabilla-u4a-ios-swift-sdk",
+        "state": {
+          "branch": null,
+          "revision": "3bd42ed27b1740fffe05d3a22872ad3c4d396c8a",
+          "version": "6.10.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

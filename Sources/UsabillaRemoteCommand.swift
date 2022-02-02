@@ -11,14 +11,15 @@ import Usabilla
 import TealiumSwift
 #else
 import TealiumCore
-import TealiumTagManagement
 import TealiumRemoteCommands
 #endif
 
 public class UsabillaRemoteCommand: RemoteCommand {
     
     var usabillaInstance: UsabillaCommand?
-
+    public override var version: String? {
+        return UsabillaConstants.version
+    }
     public init(usabillaInstance: UsabillaCommand = UsabillaInstance(),
                 type: RemoteCommandType = .webview) {
         self.usabillaInstance = usabillaInstance
