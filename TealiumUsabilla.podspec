@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
     # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
     s.name         = "TealiumUsabilla"
     s.module_name  = "TealiumUsabilla"
-    s.version      = "1.1.0"
+    s.version      = "1.2.0"
     s.summary      = "Tealium Swift and Usabilla integration"
     s.description  = <<-DESC
     Tealium's integration with Usabilla for iOS.
@@ -21,11 +21,7 @@ Pod::Spec.new do |s|
 
     # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
     s.swift_version = "5.0"
-    s.platform     = :ios, "11.0"
-
-    # ――― Excluded Archs ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-    s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 i386' }
-    s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 i386' }        
+    s.platform     = :ios, "11.0"   
 
     # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
     s.source       = { :git => "https://github.com/Tealium/tealium-ios-usabilla-remote-command.git", :tag => "#{s.version}" }
@@ -34,9 +30,8 @@ Pod::Spec.new do |s|
     s.ios.source_files      = "Sources/*.{swift}"
 
     # ――― Dependencies ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-    s.ios.dependency 'tealium-swift/Core', '~> 2.6'
-    s.ios.dependency 'tealium-swift/RemoteCommands', '~> 2.6'
-    s.ios.dependency 'tealium-swift/TagManagement', '~> 2.6'
+    s.ios.dependency 'tealium-swift/Core', '~> 2.9'
+    s.ios.dependency 'tealium-swift/RemoteCommands', '~> 2.9'
     s.ios.dependency 'Usabilla', '~> 6.10'
 
 end

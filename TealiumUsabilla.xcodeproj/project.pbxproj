@@ -16,7 +16,6 @@
 		CF128802252CE06000122C07 /* UsabillaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1287FF252CE06000122C07 /* UsabillaConstants.swift */; };
 		CF128803252CE06000122C07 /* UsabillaRemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF128800252CE06000122C07 /* UsabillaRemoteCommand.swift */; };
 		CF128804252CE06000122C07 /* UsabillaInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF128801252CE06000122C07 /* UsabillaInstance.swift */; };
-		CFBA50BF2304DD6F00EF52BC /* HttpTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA50BE2304DD6F00EF52BC /* HttpTestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +63,6 @@
 		CF1287FF252CE06000122C07 /* UsabillaConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaConstants.swift; sourceTree = "<group>"; };
 		CF128800252CE06000122C07 /* UsabillaRemoteCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaRemoteCommand.swift; sourceTree = "<group>"; };
 		CF128801252CE06000122C07 /* UsabillaInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsabillaInstance.swift; sourceTree = "<group>"; };
-		CFBA50BE2304DD6F00EF52BC /* HttpTestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTestHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +139,6 @@
 			children = (
 				15E8E159277DE40000F50872 /* Support */,
 				4B28C48422FB3B08002AE7FA /* UsabillaInstanceTests.swift */,
-				CFBA50BE2304DD6F00EF52BC /* HttpTestHelpers.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -275,7 +272,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B28C48522FB3B08002AE7FA /* UsabillaInstanceTests.swift in Sources */,
-				CFBA50BF2304DD6F00EF52BC /* HttpTestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
