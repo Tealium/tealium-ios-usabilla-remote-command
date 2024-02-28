@@ -1,17 +1,17 @@
 PODS:
-  - tealium-swift/Core (2.9.1)
-  - tealium-swift/Lifecycle (2.9.1):
+  - tealium-swift/Core (2.12.2)
+  - tealium-swift/Lifecycle (2.12.2):
     - tealium-swift/Core
-  - tealium-swift/RemoteCommands (2.9.1):
+  - tealium-swift/RemoteCommands (2.12.2):
     - tealium-swift/Core
-  - TealiumUsabilla (1.2.0):
-    - tealium-swift/Core (~> 2.9)
-    - tealium-swift/RemoteCommands (~> 2.9)
+  - TealiumUsabilla (1.3.0):
+    - tealium-swift/Core (~> 2.12)
+    - tealium-swift/RemoteCommands (~> 2.12)
     - Usabilla (~> 6.10)
   - Usabilla (6.10.0)
 
 DEPENDENCIES:
-  - tealium-swift/Lifecycle (~> 2.9)
+  - tealium-swift/Lifecycle (~> 2.12)
   - TealiumUsabilla (from `../`)
 
 SPEC REPOS:
@@ -24,10 +24,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  tealium-swift: 137769254e97d4c9f7ed6e16e0768b40888e6452
-  TealiumUsabilla: 9e01697cd441e6a06117b5c59e4add28ecb7ef68
+  tealium-swift: 4b7e3dda42d7c1de6acb769abad9920346d17d43
+  TealiumUsabilla: 7187bc29dcf0f0d77797e053272e19d6835a00bc
   Usabilla: e3a8008ba30d80d5e3a47fd09aa3285c61fd8f2f
 
-PODFILE CHECKSUM: 109eda63a6c6bdb4f0796dc80476388d42227463
+PODFILE CHECKSUM: 520716a67745f38319c80fc7ab00337ffd74d2c9
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.15.2
