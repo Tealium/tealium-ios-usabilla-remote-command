@@ -4,13 +4,13 @@ import PackageDescription
 let package = Package(
     name: "TealiumUsabilla",
     platforms: [
-        .iOS(.v9)
+        .iOS(.v12)
     ],
     products: [
         .library(name: "TealiumUsabilla", targets: ["TealiumUsabilla"])
     ],
     dependencies: [
-        .package(name: "TealiumSwift", url: "https://github.com/tealium/tealium-swift", .upToNextMajor(from: "2.9.0")),
+        .package(name: "TealiumSwift", url: "https://github.com/tealium/tealium-swift", .upToNextMajor(from: "2.12.0")),
         .package(name: "Usabilla", url: "https://github.com/usabilla/usabilla-u4a-ios-swift-sdk", .upToNextMajor(from: "6.10.0"))
     ],
     targets: [

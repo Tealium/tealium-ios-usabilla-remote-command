@@ -13,7 +13,7 @@ public enum UsabillaConstants {
     static let separator: Character = ","
     static let commandId = "usabilla"
     static let description = "Usabilla Remote Command"
-    static let version = "1.2.0"
+    static let version = "1.3.0"
     
     enum Keys {
         static let appID = "appId"
